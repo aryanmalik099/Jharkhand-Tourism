@@ -22,7 +22,11 @@
                 <li><a href="{{url_for ('planner')}}" class="nav-link">Plan Your Trip</a></li>
                 <li><a href="{{url_for ('gallery')}}" class="nav-link">Gallery</a></li>
                 <li><a href="{{url_for ('contact')}}" class="nav-link">Contact</a></li>
-                <li class="login"><a href="{{url_for ('login')}}" class="nav-link">Login</a></li>
+                {% if session.get('loggedin') %}
+                    <li class="logout"><a href="{{url_for ('logout')}}" class="nav-link link-danger">Logout</a></li>
+                {% else %}
+                    <li class="login"><a href="{{url_for ('login')}}" class="nav-link link-success">Login</a></li>
+                {% endif %}
             </ul>
             </nav>
             <div class="hamburger">

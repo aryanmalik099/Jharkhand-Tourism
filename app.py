@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'Pass4@ryan'
-app.config['MYSQL_DB'] = 'loginpage'
+app.config['MYSQL_DB'] = 'jharkhand'
 
 mysql = MySQL(app)
 app.secret_key = 'root'
@@ -30,10 +30,9 @@ def login():
         acc = cur.fetchone()
         if acc:
             session['loggedin'] = True
-            session['id'] = acc[0]
+            session['id'] = acc
             session['username'] = acc[1]
-            msg = 'Logged in successfully!'
-            return render_template('home.html', msg=msg, username=session.get('username'))
+            return redirect(url_for('home'))
         else:
             msg = 'Invalid Credentials'
     return render_template('login.html',msg=msg)
@@ -75,7 +74,7 @@ def logout():
     session.pop('loggedin', None)
     session.pop('id', None)
     session.pop('username', None)
-    return redirect(url_for('login'))
+    return redirect(url_for('home'))
 
 
 @app.route('/planner')
