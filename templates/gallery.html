@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Jharkhand: A Visual Journey</title>
+    <link rel="stylesheet" href="../CSS/gallery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a>Jharkhand <span class="highlight">Tourism</span></a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../HTML/index.html" class="nav-link">Home</a></li>
+                    <li><a href="../HTML/destinations.html" class="nav-link">Destinations</a></li>
+                    <li><a href="../HTML/planner.html" class="nav-link">Plan Your Trip</a></li>
+                    <li><a href="../HTML/gallery.html" class="nav-link">Gallery</a></li>
+                    <li><a href="../HTML/contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Explore the Unseen. Experience Jharkhand.</h1>
+                <p>A visual journey through the heart of India.</p>
+            </div>
+            <!-- Background image/video would go here -->
+        </section>
+
+        <section class="gallery-categories container">
+            <h2>Gallery Categories</h2>
+            <div class="category-grid">
+                <div class="category-item" data-category="waterfalls">
+                    <img src="https://picsum.photos/id/1015/400/300" alt="Waterfalls & Rivers">
+                    <div class="overlay">Waterfalls & Rivers</div>
+                </div>
+                <div class="category-item" data-category="wildlife">
+                    <img src="https://picsum.photos/id/1021/400/300" alt="Wildlife & National Parks">
+                    <div class="overlay">Wildlife & National Parks</div>
+                </div>
+                <div class="category-item" data-category="temples">
+                    <img src="https://picsum.photos/id/1011/400/300" alt="Temples & Pilgrimage Sites">
+                    <div class="overlay">Temples & Pilgrimage Sites</div>
+                </div>
+                <div class="category-item" data-category="culture">
+                    <img src="https://picsum.photos/id/1023/400/300" alt="Culture & Festivals">
+                    <div class="overlay">Culture & Festivals</div>
+                </div>
+                <div class="category-item" data-category="adventure">
+                    <img src="https://picsum.photos/id/1016/400/300" alt="Adventure Sports">
+                    <div class="overlay">Adventure Sports</div>
+                </div>
+                <div class="category-item" data-category="food">
+                    <img src="https://picsum.photos/id/1080/400/300" alt="Local Cuisine">
+                    <div class="overlay">Local Cuisine</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="interactive-gallery container">
+            <h2>Our Photo Collection</h2>
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="waterfalls">Waterfalls</button>
+                <button class="filter-btn" data-filter="wildlife">Wildlife</button>
+                <button class="filter-btn" data-filter="temples">Temples</button>
+                <button class="filter-btn" data-filter="culture">Culture</button>
+                <button class="filter-btn" data-filter="adventure">Adventure</button>
+                <button class="filter-btn" data-filter="food">Food</button>
+            </div>
+            <div class="photo-grid" id="photoGrid">
+                <!-- Images will be loaded here by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox Markup -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn">&times;</span>
+        <span class="prev-btn">&leftarrow;</span>
+        <span class="next-btn">&rightarrow;</span>
+        <img class="lightbox-content" id="lightboxImg" src="" alt="">
+        <div id="caption" class="caption"></div>
+    </div>
+
+    <footer class="animated-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Tourism information</h3>
+                <ul>
+                    <li><a href="#">News/Latest updates</a></li>
+                    <li><a href="#">Tourist Attraction</a></li>
+                    <li><a href="#">Tourist statistics</a></li>
+                    <li><a href="#">Weather</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Downloads</h3>
+                <ul>
+                    <li><a href="#">Local navigation app</a></li>
+                    <li><a href="#">Local weather app</a></li>
+                    <li><a href="#">Translation app</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Policies/ Schemes/ Acts/ Rules & Regulation</h3>
+                <ul>
+                    <li><a href="#">Research purposes</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Other website links</h3>
+                <ul>
+                    <li><a href="#">Government of India</a></li>
+                    <li><a href="#">Government of Jharkhand</a></li>
+                    <li><a href="#">Tourist Portal</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Essentials 🌎</h3>
+                <ul>
+                    <li><a href="#">Yet</a></li>
+                    <li><a href="#">To</a></li>
+                    <li><a href="#">Decide</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Gallery 📸</h3>
+                <ul>
+                    <li><a href="#">Images</a></li>
+                    <li><a href="#">Videos</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Helpline Numbers</h3>
+                <ul>
+                    <li><a href="#">Local police</a></li>
+                    <li><a href="#">Women helpline</a></li>
+                    <li><a href="#">Ambulance, Etc.</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Tourist related</h3>
+                <ul>
+                    <li><a href="#">Do's and Don'ts</a></li>
+                    <li><a href="#">Travel safety</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- This is where the animated elements will be generated -->
+        <div class="footer-animation-container"></div>
+    </footer>
+
+    <script src="../JS/gallery.js"></script>
+</body>
+</html>

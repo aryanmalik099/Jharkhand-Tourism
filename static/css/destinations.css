@@ -1,0 +1,608 @@
+/* Custom Properties (CSS Variables) */
+:root {
+    --primary-color: #007bff; /* Vibrant Blue */
+    --secondary-color: #6a00ff; /* Deep Purple */
+    --accent-color: #ff3366; /* Hot Pink/Rose */
+    --text-dark: #2c3e50;
+    --text-light: #555;
+    --bg-light: #f4f7f6;
+    --bg-white: #ffffff;
+    --header-height: 70px;
+    --padding-section: 80px;
+    --padding-section-small: 40px;
+    --font-playfair: 'Playfair Display', serif;
+    --font-roboto: 'Roboto', sans-serif;
+}
+
+/* Basic Reset & Typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-roboto);
+    line-height: 1.6;
+    color: var(--text-light);
+    background-color: var(--bg-light);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-playfair);
+    color: var(--text-dark);
+    margin-bottom: 0.8em;
+    line-height: 1.2;
+}
+
+h1 { font-size: 3.5em; }
+h2 { font-size: 3em; }
+h3 { font-size: 2.5em; }
+h4 { font-size: 1.8em; }
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.section-padding {
+    padding: var(--padding-section) 0;
+}
+
+.section-padding-small {
+    padding: var(--padding-section-small) 0;
+}
+
+.bg-light {
+    background-color: var(--bg-light);
+}
+
+.section-title {
+    font-size: 2.8em;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 10px;
+    display: inline-block;
+    color: var(--secondary-color); /* Added color */
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+
+.section-title.light {
+    color: var(--bg-white);
+}
+.section-title.light::after {
+    background-color: var(--bg-white);
+}
+
+.section-title-small {
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+}
+.section-title-small::after {
+    content: none;
+}
+
+/* Header */
+.main-header {
+    background-color: rgba(0, 123, 255, 0.2); /* Semi-transparent blue */
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.main-header.scrolled {
+    background-color: var(--secondary-color); /* Darker purple on scroll */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.main-header .logo a {
+    color: var(--bg-white);
+    font-family: var(--font-playfair);
+    font-size: 1.8em;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.main-header.scrolled .logo a {
+    color: var(--bg-white);
+}
+
+.main-header .logo .highlight {
+    color: var(--accent-color);
+}
+
+.main-nav .nav-list {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.main-nav .nav-link {
+    color: rgba(255,255,255,0.9);
+    padding: 15px 0px;
+    display: block;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    font-size: 1em;
+}
+
+.main-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.main-nav .nav-link:hover::after,
+.main-nav .nav-link.current-page::after {
+    width: 100%;
+}
+
+.main-nav .nav-link:hover, .main-nav .nav-link.current-page {
+    color: var(--bg-white);
+}
+
+.hamburger {
+    display: none;
+    font-size: 1.8em;
+    color: var(--bg-white);
+    cursor: pointer;
+    z-index: 1001;
+    transition: color 0.3s ease;
+}
+
+.hamburger:hover {
+    color: var(--accent-color);
+}
+
+/* Buttons */
+.btn-primary, .btn-secondary, .btn-hero, .btn-text {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.95em;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--bg-white);
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(106, 0, 255, 0.4);
+}
+
+.btn-secondary {
+    background-color: var(--accent-color);
+    color: var(--bg-white);
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 4px 12px rgba(255, 51, 102, 0.2);
+}
+
+.btn-secondary:hover {
+    background-color: #b32448; /* Darker accent */
+    border-color: #b32448;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 51, 102, 0.4);
+}
+
+.btn-hero {
+    background-color: var(--accent-color);
+    color: var(--bg-white);
+    border: 2px solid var(--accent-color);
+    padding: 15px 35px;
+    font-size: 1.1em;
+    border-radius: 8px; /* Slightly rounded */
+    box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3);
+}
+
+.btn-hero:hover {
+    background-color: #b32448;
+    border-color: #b32448;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 51, 102, 0.5);
+}
+
+.btn-primary i, .btn-hero i {
+    margin-left: 10px;
+}
+
+.btn-text {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    padding: 0;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.btn-text i {
+    margin-left: 5px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.btn-text:hover i {
+    transform: translateX(5px);
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1800x900/4CAF50/ffffff?text=Betla+National+Park+Hero') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--bg-white);
+    position: relative;
+    padding-top: var(--header-height);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    padding: 30px;
+}
+
+.hero-subtitle {
+    font-size: 1.4em; /* Slightly larger */
+    margin-bottom: 10px;
+    color: var(--accent-color); /* Colorful subtitle */
+    letter-spacing: 3px; /* More spacing */
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.hero-content h2 {
+    font-size: 4.8em; /* Slightly larger title */
+    margin-bottom: 20px;
+    color: var(--bg-white);
+    text-shadow: 3px 3px 8px rgba(0,0,0,0.8);
+}
+
+.hero-description {
+    font-size: 1.5em; /* Slightly larger description */
+    margin-bottom: 40px;
+    color: rgba(255,255,255,0.95);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* About Section */
+.about-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 60px;
+    background-color: var(--bg-white);
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.about-content {
+    flex: 2;
+    min-width: 300px;
+}
+
+.about-image {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Weather Widget Section */
+.weather-widget {
+    background-color: var(--bg-white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    max-width: 500px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    border: 2px solid var(--primary-color); /* Added border */
+}
+
+.weather-widget .loading-spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid var(--accent-color); /* Used accent color */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    display: none;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.weather-widget.loading .loading-spinner {
+    display: block;
+}
+.weather-widget.loading .weather-data {
+    display: none;
+}
+
+.weather-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.weather-icon {
+    font-size: 3.5em; /* Slightly larger */
+    color: var(--accent-color);
+}
+
+.weather-temp {
+    font-size: 2.8em; /* Slightly larger */
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.weather-description {
+    font-size: 1.3em;
+    text-transform: capitalize;
+    color: var(--secondary-color); /* Colorful description */
+}
+
+.weather-details {
+    display: flex;
+    gap: 25px; /* More spacing */
+    font-size: 1em; /* Slightly larger */
+    color: var(--text-light);
+}
+
+.weather-details div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.weather-details i {
+    color: var(--accent-color); /* Colorful icons */
+}
+
+.weather-notice {
+    font-size: 0.8em;
+    color: #999;
+    margin-top: 15px;
+}
+
+/* Highlights Section */
+.highlights-section {
+    background-color: var(--bg-light);
+}
+
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.highlight-item {
+    background-color: var(--bg-white);
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    border-top: 6px solid var(--primary-color);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-top-color 0.4s ease;
+}
+
+.highlight-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+    border-top-color: var(--accent-color);
+}
+
+.icon-large {
+    font-size: 3.5em;
+    color: var(--secondary-color); /* Colorful icons */
+    margin-bottom: 20px;
+}
+
+.highlight-item h4 {
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+/* Gallery Section */
+.gallery-section {
+    background-color: var(--bg-white);
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease-in-out, filter 0.5s ease;
+}
+
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(106, 0, 255, 0.7), rgba(255, 51, 102, 0.5)); /* Colorful gradient overlay */
+    color: var(--bg-white);
+    display: flex;
+}
+
+.animated-footer {
+    position: relative;
+    background: linear-gradient(to right, #4CAF50, #2196F3, #9C27B0, #FFEB3B, #FF9800); /* Colorful gradient */
+    color: white;
+    padding: 20px 0;
+    overflow: hidden; /* Crucial to keep particles within the footer */
+    min-height: 250px; /* Adjust as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 90%;
+    max-width: 1200px;
+    z-index: 2; /* Make sure content is above animation */
+    position: relative; /* To contain the z-index */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* For better readability on colorful background */
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 180px;
+    margin: 10px;
+}
+
+.footer-column h3 {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #ffd700; /* Gold-ish on hover */
+}
+
+/* Styles for the animated particles */
+.footer-animation-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Below the content */
+    pointer-events: none; /* Allows clicks to pass through to links */
+}
+
+.particle {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8); /* White or slightly colored glow */
+    border-radius: 50%;
+    animation: moveAndFade 15s infinite ease-in-out alternate; /* Animation will be applied by JS */
+    opacity: 0; /* Start hidden */
+}
+
+@keyframes moveAndFade {
+    0% {
+        transform: translate(0, 0) scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translate(calc(var(--end-x) * 1px), calc(var(--end-y) * 1px)) scale(1.2);
+        opacity: 0;
+    }
+}
