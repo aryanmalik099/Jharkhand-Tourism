@@ -1,371 +1,371 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jharkhand Tourism - Explore the Untouched Heart of India</title>
-<link rel="stylesheet" href="/static/css/index.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jharkhand Tourism - Explore the Untouched Heart of India</title>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-<header class="main-header">
-<div class="container">
-<div class="logo">
-<a href="#home">Jharkhand <span class="highlight">Tourism</span></a>
-</div>
-<nav class="main-nav">
-<ul class="nav-list">
-<li><a href="../HTML/index.html" class="nav-link">Home</a></li>
-<li><a href="../HTML/destinations.html" class="nav-link">Destinations</a></li>
-<li><a href="../HTML/planner.html" class="nav-link">Plan Your Trip</a></li>
-<li><a href="../HTML/gallery.html" class="nav-link">Gallery</a></li>
-<li><a href="../HTML/contact.html" class="nav-link">Contact</a></li>
-</ul>
-</nav>
-<div class="hamburger">
-<i class="fas fa-bars"></i>
-</div>
-</div>
-</header>
-code
-Code
-<section id="home" class="hero-section">
-    <video class="hero-video" autoplay muted loop playsinline>
-        <source src="../IMG/jharkhand.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <div class="hero-content">
-        <h1 class="hero-title">Discover the Soul of India</h1>
-        <p class="hero-subtitle">Jharkhand: Untouched, Unforgettable, Unveiled.</p>
-        <a href="#discover" class="btn btn-primary hero-cta">Start Your Journey <i class="fas fa-arrow-right"></i></a>
-    </div>
-</section>
-
-<section id="discover" class="section-padded intro-section">
-    <div class="container">
-        <h2 class="section-title">Why Jharkhand Should Be Your Next Adventure</h2>
-        <p class="section-subtitle">A land of unparalleled natural beauty, rich cultural heritage, and thrilling experiences awaits you.</p>
-
-        <div class="features-grid">
-            <div class="feature-card animate-on-scroll">
-                <i class="fas fa-mountain"></i>
-                <h3>Breathtaking Landscapes</h3>
-                <p>Lush forests, majestic waterfalls, and ancient hills define Jharkhand's stunning natural canvas.</p>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+            <a href="{{url_for('home')}}">Jharkhand <span class="highlight">Tourism</span></a>
             </div>
-            <div class="feature-card animate-on-scroll">
-                <i class="fas fa-palette"></i>
-                <h3>Vibrant Tribal Culture</h3>
-                <p>Immerse yourself in the colorful traditions, music, and art of indigenous communities.</p>
-            </div>
-            <div class="feature-card animate-on-scroll">
-                <i class="fas fa-history"></i>
-                <h3>Ancient & Spiritual Sites</h3>
-                <p>Explore centuries-old temples, historical monuments, and serene pilgrimage destinations.</p>
-            </div>
-            <div class="feature-card animate-on-scroll">
-                <i class="fas fa-hiking"></i>
-                <h3>Adventure & Wildlife</h3>
-                <p>From thrilling treks to exciting wildlife safaris, experience adrenaline-pumping activities.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="destinations-preview" class="section-padded bg-light-gray">
-    <div class="container">
-        <h2 class="section-title">Popular Destinations</h2>
-        <p class="section-subtitle">Explore a curated selection of Jharkhand's most beloved attractions.</p>
-
-        <div class="destination-carousel-wrapper">
-            <div class="destination-carousel">
-                <div class="carousel-item animate-on-scroll">
-                    <img src="https://via.placeholder.com/400x300/6A1B9A/FFFFFF?text=Betla+National+Park" alt="Betla National Park">
-                    <div class="item-info">
-                        <h3>Betla National Park</h3>
-                        <p>Home to diverse wildlife including tigers, elephants, and leopards, offering thrilling safaris.</p>
-                        <a href="#" class="btn btn-sm btn-primary-outline">Discover More</a>
-                    </div>
-                </div>
-                <div class="carousel-item animate-on-scroll">
-                    <img src="https://via.placeholder.com/400x300/4CAF50/FFFFFF?text=Dassam+Falls" alt="Dassam Falls">
-                    <div class="item-info">
-                        <h3>Dassam Falls</h3>
-                        <p>A spectacular natural cascade, perfect for nature photography and serene picnics.</p>
-                        <a href="#" class="btn btn-sm btn-primary-outline">Discover More</a>
-                    </div>
-                </div>
-                <div class="carousel-item animate-on-scroll">
-                    <img src="https://via.placeholder.com/400x300/FF5722/FFFFFF?text=Parasnath+Hill" alt="Parasnath Hill">
-                    <div class="item-info">
-                        <h3>Parasnath Hill</h3>
-                        <p>A significant Jain pilgrimage site with breathtaking panoramic views from the summit.</p>
-                        <a href="#" class="btn btn-sm btn-primary-outline">Discover More</a>
-                    </div>
-                </div>
-                <div class="carousel-item animate-on-scroll">
-                    <img src="https://via.placeholder.com/400x300/03A9F4/FFFFFF?text=Netarhat" alt="Netarhat">
-                    <div class="item-info">
-                        <h3>Netarhat</h3>
-                        <p>The 'Queen of Chotanagpur,' known for stunning sunrises, sunsets, and lush pine forests.</p>
-                        <a href="#" class="btn btn-sm btn-primary-outline">Discover More</a>
-                    </div>
-                </div>
-                <div class="carousel-item animate-on-scroll">
-                    <img src="https://via.placeholder.com/400x300/8BC34A/FFFFFF?text=Jonha+Falls" alt="Jonha Falls">
-                    <div class="item-info">
-                        <h3>Jonha Falls</h3>
-                        <p>Also known as Gautam Dhara, a picturesque waterfall with a revered Buddhist temple nearby.</p>
-                        <a href="#" class="btn btn-sm btn-primary-outline">Discover More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-nav">
-                <button class="prev"><i class="fas fa-chevron-left"></i></button>
-                <button class="next"><i class="fas fa-chevron-right"></i></button>
-            </div>
-        </div>
-        <div class="text-center mt-5">
-            <a href="../HTML/destinations.html" class="btn btn-primary-outline">View All Destinations</a>
-        </div>
-    </div>
-</section>
-
-<section id="experiences" class="section-padded">
-    <div class="container">
-        <h2 class="section-title">Unique Jharkhand Experiences</h2>
-        <p class="section-subtitle">Immerse yourself in activities that connect you with the soul of Jharkhand.</p>
-
-        <div class="experience-grid">
-            <div class="experience-card animate-on-scroll">
-                <img src="https://via.placeholder.com/600x400/FFC107/333333?text=Tribal+Tour" alt="Tribal Village Tour">
-                <div class="experience-info">
-                    <h3>Tribal Village Tour</h3>
-                    <p>Engage with local communities, learn about their traditions, and witness traditional crafts.</p>
-                    <a href="#" class="read-more">Explore <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            <div class="experience-card animate-on-scroll">
-                <img src="https://via.placeholder.com/600x400/28A745/FFFFFF?text=Waterfall+Trek" alt="Waterfall Trekking">
-                <div class="experience-info">
-                    <h3>Waterfall Trekking</h3>
-                    <p>Embark on thrilling treks to discover hidden waterfalls and enjoy the pristine natural beauty.</p>
-                    <a href="#" class="read-more">Explore <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            <div class="experience-card animate-on-scroll">
-                <img src="https://via.placeholder.com/600x400/17A2B8/FFFFFF?text=Wildlife+Safari" alt="Wildlife Safari">
-                <div class="experience-info">
-                    <h3>Wildlife Safari</h3>
-                    <p>Journey into national parks and sanctuaries for a chance to spot exotic wildlife in their natural habitat.</p>
-                    <a href="#" class="read-more">Explore <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            <div class="experience-card animate-on-scroll">
-                <img src="https://via.placeholder.com/600x400/6610F2/FFFFFF?text=Spiritual+Journey" alt="Spiritual Journeys">
-                <div class="experience-info">
-                    <h3>Spiritual Journeys</h3>
-                    <p>Visit ancient temples and pilgrimage sites offering peace and spiritual solace.</p>
-                    <a href="#" class="read-more">Explore <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="gallery" class="gallery-section section-padded bg-light-gray">
-    <div class="container">
-        <h2 class="section-title">Visual Journey: Our Photo Gallery</h2>
-        <p class="section-subtitle">A captivating glimpse into the mesmerizing beauty and vibrant culture of Jharkhand.</p>
-
-        <div class="gallery-grid">
-            <div class="gallery-item large animate-on-scroll">
-                <img src="https://via.placeholder.com/800x600/FF7F50/FFFFFF?text=Majestic+Landscape" alt="Jharkhand Landscape">
-                <div class="gallery-overlay">Majestic Landscapes</div>
-            </div>
-            <div class="gallery-item animate-on-scroll">
-                <img src="https://via.placeholder.com/400x300/20B2AA/FFFFFF?text=Tribal+Dance" alt="Tribal Dance">
-                <div class="gallery-overlay">Vibrant Culture</div>
-            </div>
-            <div class="gallery-item animate-on-scroll">
-                <img src="https://via.placeholder.com/400x300/DB7093/FFFFFF?text=Ancient+Temple" alt="Ancient Temple">
-                <div class="gallery-overlay">Ancient Temples</div>
-            </div>
-            <div class="gallery-item animate-on-scroll">
-                <img src="https://via.placeholder.com/400x300/BA55D3/FFFFFF?text=Wildlife+Safari" alt="Wildlife Safari">
-                <div class="gallery-overlay">Wildlife Encounters</div>
-            </div>
-            <div class="gallery-item animate-on-scroll">
-                <img src="https://via.placeholder.com/400x300/4682B4/FFFFFF?text=River+View" alt="River View">
-                <div class="gallery-overlay">Serene Rivers</div>
-            </div>
-            <div class="gallery-item animate-on-scroll">
-                <img src="https://via.placeholder.com/400x300/DAA520/FFFFFF?text=Local+Crafts" alt="Local Crafts">
-                <div class="gallery-overlay">Local Artisans</div>
-            </div>
-        </div>
-        <div class="text-center mt-5">
-            <a href="../HTML/gallery.html" class="btn btn-primary-outline">View All Photos</a>
-        </div>
-    </div>
-</section>
-
-<section id="plan-your-trip" class="section-padded bg-dark-overlay text-white plan-trip-section">
-    <div class="container text-center animate-on-scroll">
-        <h2 class="section-title">Plan Your Unforgettable Trip</h2>
-        <p class="section-subtitle">Let us help you craft the perfect itinerary for your Jharkhand adventure. Seamlessly tailored to your desires.</p>
-        <div class="cta-buttons">
-            <a href="#" class="btn btn-light-inverted">Download E-Brochure</a>
-            <a href="#contact" class="btn btn-primary-light">Get a Custom Itinerary</a>
-        </div>
-    </div>
-</section>
-
-<section id="testimonials" class="section-padded">
-    <div class="container">
-        <h2 class="section-title">What Our Visitors Say</h2>
-        <p class="section-subtitle">Hear from those who have experienced the magic of Jharkhand.</p>
-
-        <div class="testimonials-grid">
-            <div class="testimonial-card animate-on-scroll">
-                <i class="fas fa-quote-left"></i>
-                <p>"Jharkhand truly surprised me! The waterfalls were breathtaking, and the local culture was so welcoming. A hidden gem of India!"</p>
-                <div class="reviewer-info">
-                    <img src="https://via.placeholder.com/80/E91E63/FFFFFF?text=A" alt="Avatar Anand Sharma">
-                    <h4>Anand Sharma</h4>
-                    <span>Travel Blogger</span>
-                </div>
-            </div>
-            <div class="testimonial-card animate-on-scroll">
-                <i class="fas fa-quote-left"></i>
-                <p>"The wildlife safari in Betla was incredible. Spotted a leopard and numerous birds. Highly recommend for nature enthusiasts."</p>
-                <div class="reviewer-info">
-                    <img src="https://via.placeholder.com/80/00BCD4/FFFFFF?text=P" alt="Avatar Priya Singh">
-                    <h4>Priya Singh</h4>
-                    <span>Wildlife Photographer</span>
-                </div>
-            </div>
-            <div class="testimonial-card animate-on-scroll">
-                <i class="fas fa-quote-left"></i>
-                <p>"A spiritual journey to Parasnath Hill was exactly what I needed. The peace and tranquility were immense. Jharkhand is a must-visit."</p>
-                <div class="reviewer-info">
-                    <img src="https://via.placeholder.com/80/FFC107/333333?text=R" alt="Avatar Rahul Kumar">
-                    <h4>Rahul Kumar</h4>
-                    <span>Pilgrim</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="contact" class="section-padded">
-    <div class="container">
-        <h2 class="section-title">Connect With Us</h2>
-        <p class="section-subtitle">Have questions, need assistance, or ready to book? We're here to help.</p>
-
-        <div class="contact-grid">
-            <div class="contact-info animate-on-scroll">
-                <h3>Reach Out Directly</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Jharkhand Tourism Department, Ranchi, India</p>
-                <p><i class="fas fa-phone"></i> +91 123 456 7890</p>
-                <p><i class="fas fa-envelope"></i> info@jharkhandtourism.gov.in</p>
-                <div class="social-links mt-4">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            <div class="contact-form animate-on-scroll">
-                <h3>Send us a Message</h3>
-                <form>
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="subject" name="subject" placeholder="Subject">
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary-light">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
-
-<footer class="animated-footer">
-    <div class="footer-content">
-        <div class="footer-column">
-            <h3>Tourism information</h3>
-            <ul>
-                <li><a href="#">News/Latest updates</a></li>
-                <li><a href="#">Tourist Attraction</a></li>
-                <li><a href="#">Tourist statistics</a></li>
-                <li><a href="#">Weather</a></li>
+            <nav class="main-nav">
+            <ul class="nav-list">
+                <li><a href="../HTML/index.html" class="nav-link">Home</a></li>
+                <li><a href="../HTML/destinations.html" class="nav-link">Destinations</a></li>
+                <li><a href="../HTML/planner.html" class="nav-link">Plan Your Trip</a></li>
+                <li><a href="../HTML/gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="../HTML/contact.html" class="nav-link">Contact</a></li>
             </ul>
+            </nav>
+            <div class="hamburger">
+            <i class="fas fa-bars"></i>
+            </div>
         </div>
-        <div class="footer-column">
-            <h3>Downloads</h3>
-            <ul>
-                <li><a href="#">Local navigation app</a></li>
-                <li><a href="#">Local weather app</a></li>
-                <li><a href="#">Translation app</a></li>
-            </ul>
+    </header>
+    code
+    Code
+    <section id="home" class="hero-section">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="../IMG/jharkhand.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-content">
+            <h1 class="hero-title">Discover the Soul of India</h1>
+            <p class="hero-subtitle">Jharkhand: Untouched, Unforgettable, Unveiled.</p>
+            <a href="#discover" class="btn btn-primary hero-cta">Start Your Journey <i class="fas fa-arrow-right"></i></a>
         </div>
-        <div class="footer-column">
-            <h3>Policies/ Schemes/ Acts/ Rules & Regulation</h3>
-            <ul>
-                <li><a href="#">Research purposes</a></li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h3>Other website links</h3>
-            <ul>
-                <li><a href="#">Government of India</a></li>
-                <li><a href="#">Government of Jharkhand</a></li>
-                <li><a href="#">Tourist Portal</a></li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h3>Essentials 🌎</h3>
-            <ul>
-                <li><a href="#">Yet</a></li>
-                <li><a href="#">To</a></li>
-                <li><a href="#">Decide</a></li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h3>Gallery 📸</h3>
-            <ul>
-                <li><a href="#">Images</a></li>
-                <li><a href="#">Videos</a></li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h3>Helpline Numbers</h3>
-            <ul>
-                <li><a href="#">Local police</a></li>
-                <li><a href="#">Women helpline</a></li>
-                <li><a href="#">Ambulance, Etc.</a></li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h3>Tourist related</h3>
-            <ul>
-                <li><a href="#">Do's and Don'ts</a></li>
-                <li><a href="#">Travel safety</a></li>
-            </ul>
-        </div>
-    </div>
-    <!-- This is where the animated elements will be generated -->
-    <div class="footer-animation-container"></div>
-</footer>
+    </section>
 
-<script src="../JS/index.js"></script>
+    <section id="discover" class="section-padded intro-section">
+        <div class="container">
+            <h2 class="section-title">Why Jharkhand Should Be Your Next Adventure</h2>
+            <p class="section-subtitle">A land of unparalleled natural beauty, rich cultural heritage, and thrilling experiences awaits you.</p>
+
+            <div class="features-grid">
+                <div class="feature-card animate-on-scroll">
+                    <i class="fas fa-mountain"></i>
+                    <h3>Breathtaking Landscapes</h3>
+                    <p>Lush forests, majestic waterfalls, and ancient hills define Jharkhand's stunning natural canvas.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <i class="fas fa-palette"></i>
+                    <h3>Vibrant Tribal Culture</h3>
+                    <p>Immerse yourself in the colorful traditions, music, and art of indigenous communities.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <i class="fas fa-history"></i>
+                    <h3>Ancient & Spiritual Sites</h3>
+                    <p>Explore centuries-old temples, historical monuments, and serene pilgrimage destinations.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <i class="fas fa-hiking"></i>
+                    <h3>Adventure & Wildlife</h3>
+                    <p>From thrilling treks to exciting wildlife safaris, experience adrenaline-pumping activities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="destinations-preview" class="section-padded bg-light-gray">
+        <div class="container">
+            <h2 class="section-title">Popular Destinations</h2>
+            <p class="section-subtitle">Explore a curated selection of Jharkhand's most beloved attractions.</p>
+
+            <div class="destination-carousel-wrapper">
+                <div class="destination-carousel">
+                    <div class="carousel-item animate-on-scroll">
+                        <img src="https://via.placeholder.com/400x300/6A1B9A/FFFFFF?text=Betla+National+Park" alt="Betla National Park">
+                        <div class="item-info">
+                            <h3>Betla National Park</h3>
+                            <p>Home to diverse wildlife including tigers, elephants, and leopards, offering thrilling safaris.</p>
+                            <a href="#" class="btn btn-sm btn-primary-outline">Discover More</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item animate-on-scroll">
+                        <img src="https://via.placeholder.com/400x300/4CAF50/FFFFFF?text=Dassam+Falls" alt="Dassam Falls">
+                        <div class="item-info">
+                            <h3>Dassam Falls</h3>
+                            <p>A spectacular natural cascade, perfect for nature photography and serene picnics.</p>
+                            <a href="#" class="btn btn-sm btn-primary-outline">Discover More</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item animate-on-scroll">
+                        <img src="https://via.placeholder.com/400x300/FF5722/FFFFFF?text=Parasnath+Hill" alt="Parasnath Hill">
+                        <div class="item-info">
+                            <h3>Parasnath Hill</h3>
+                            <p>A significant Jain pilgrimage site with breathtaking panoramic views from the summit.</p>
+                            <a href="#" class="btn btn-sm btn-primary-outline">Discover More</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item animate-on-scroll">
+                        <img src="https://via.placeholder.com/400x300/03A9F4/FFFFFF?text=Netarhat" alt="Netarhat">
+                        <div class="item-info">
+                            <h3>Netarhat</h3>
+                            <p>The 'Queen of Chotanagpur,' known for stunning sunrises, sunsets, and lush pine forests.</p>
+                            <a href="#" class="btn btn-sm btn-primary-outline">Discover More</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item animate-on-scroll">
+                        <img src="https://via.placeholder.com/400x300/8BC34A/FFFFFF?text=Jonha+Falls" alt="Jonha Falls">
+                        <div class="item-info">
+                            <h3>Jonha Falls</h3>
+                            <p>Also known as Gautam Dhara, a picturesque waterfall with a revered Buddhist temple nearby.</p>
+                            <a href="#" class="btn btn-sm btn-primary-outline">Discover More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <button class="prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="../HTML/destinations.html" class="btn btn-primary-outline">View All Destinations</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="experiences" class="section-padded">
+        <div class="container">
+            <h2 class="section-title">Unique Jharkhand Experiences</h2>
+            <p class="section-subtitle">Immerse yourself in activities that connect you with the soul of Jharkhand.</p>
+
+            <div class="experience-grid">
+                <div class="experience-card animate-on-scroll">
+                    <img src="https://via.placeholder.com/600x400/FFC107/333333?text=Tribal+Tour" alt="Tribal Village Tour">
+                    <div class="experience-info">
+                        <h3>Tribal Village Tour</h3>
+                        <p>Engage with local communities, learn about their traditions, and witness traditional crafts.</p>
+                        <a href="#" class="read-more">Explore <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="experience-card animate-on-scroll">
+                    <img src="https://via.placeholder.com/600x400/28A745/FFFFFF?text=Waterfall+Trek" alt="Waterfall Trekking">
+                    <div class="experience-info">
+                        <h3>Waterfall Trekking</h3>
+                        <p>Embark on thrilling treks to discover hidden waterfalls and enjoy the pristine natural beauty.</p>
+                        <a href="#" class="read-more">Explore <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="experience-card animate-on-scroll">
+                    <img src="https://via.placeholder.com/600x400/17A2B8/FFFFFF?text=Wildlife+Safari" alt="Wildlife Safari">
+                    <div class="experience-info">
+                        <h3>Wildlife Safari</h3>
+                        <p>Journey into national parks and sanctuaries for a chance to spot exotic wildlife in their natural habitat.</p>
+                        <a href="#" class="read-more">Explore <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="experience-card animate-on-scroll">
+                    <img src="https://via.placeholder.com/600x400/6610F2/FFFFFF?text=Spiritual+Journey" alt="Spiritual Journeys">
+                    <div class="experience-info">
+                        <h3>Spiritual Journeys</h3>
+                        <p>Visit ancient temples and pilgrimage sites offering peace and spiritual solace.</p>
+                        <a href="#" class="read-more">Explore <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery-section section-padded bg-light-gray">
+        <div class="container">
+            <h2 class="section-title">Visual Journey: Our Photo Gallery</h2>
+            <p class="section-subtitle">A captivating glimpse into the mesmerizing beauty and vibrant culture of Jharkhand.</p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item large animate-on-scroll">
+                    <img src="https://via.placeholder.com/800x600/FF7F50/FFFFFF?text=Majestic+Landscape" alt="Jharkhand Landscape">
+                    <div class="gallery-overlay">Majestic Landscapes</div>
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="https://via.placeholder.com/400x300/20B2AA/FFFFFF?text=Tribal+Dance" alt="Tribal Dance">
+                    <div class="gallery-overlay">Vibrant Culture</div>
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="https://via.placeholder.com/400x300/DB7093/FFFFFF?text=Ancient+Temple" alt="Ancient Temple">
+                    <div class="gallery-overlay">Ancient Temples</div>
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="https://via.placeholder.com/400x300/BA55D3/FFFFFF?text=Wildlife+Safari" alt="Wildlife Safari">
+                    <div class="gallery-overlay">Wildlife Encounters</div>
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="https://via.placeholder.com/400x300/4682B4/FFFFFF?text=River+View" alt="River View">
+                    <div class="gallery-overlay">Serene Rivers</div>
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="https://via.placeholder.com/400x300/DAA520/FFFFFF?text=Local+Crafts" alt="Local Crafts">
+                    <div class="gallery-overlay">Local Artisans</div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="../HTML/gallery.html" class="btn btn-primary-outline">View All Photos</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="plan-your-trip" class="section-padded bg-dark-overlay text-white plan-trip-section">
+        <div class="container text-center animate-on-scroll">
+            <h2 class="section-title">Plan Your Unforgettable Trip</h2>
+            <p class="section-subtitle">Let us help you craft the perfect itinerary for your Jharkhand adventure. Seamlessly tailored to your desires.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-light-inverted">Download E-Brochure</a>
+                <a href="#contact" class="btn btn-primary-light">Get a Custom Itinerary</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section-padded">
+        <div class="container">
+            <h2 class="section-title">What Our Visitors Say</h2>
+            <p class="section-subtitle">Hear from those who have experienced the magic of Jharkhand.</p>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card animate-on-scroll">
+                    <i class="fas fa-quote-left"></i>
+                    <p>"Jharkhand truly surprised me! The waterfalls were breathtaking, and the local culture was so welcoming. A hidden gem of India!"</p>
+                    <div class="reviewer-info">
+                        <img src="https://via.placeholder.com/80/E91E63/FFFFFF?text=A" alt="Avatar Anand Sharma">
+                        <h4>Anand Sharma</h4>
+                        <span>Travel Blogger</span>
+                    </div>
+                </div>
+                <div class="testimonial-card animate-on-scroll">
+                    <i class="fas fa-quote-left"></i>
+                    <p>"The wildlife safari in Betla was incredible. Spotted a leopard and numerous birds. Highly recommend for nature enthusiasts."</p>
+                    <div class="reviewer-info">
+                        <img src="https://via.placeholder.com/80/00BCD4/FFFFFF?text=P" alt="Avatar Priya Singh">
+                        <h4>Priya Singh</h4>
+                        <span>Wildlife Photographer</span>
+                    </div>
+                </div>
+                <div class="testimonial-card animate-on-scroll">
+                    <i class="fas fa-quote-left"></i>
+                    <p>"A spiritual journey to Parasnath Hill was exactly what I needed. The peace and tranquility were immense. Jharkhand is a must-visit."</p>
+                    <div class="reviewer-info">
+                        <img src="https://via.placeholder.com/80/FFC107/333333?text=R" alt="Avatar Rahul Kumar">
+                        <h4>Rahul Kumar</h4>
+                        <span>Pilgrim</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padded">
+        <div class="container">
+            <h2 class="section-title">Connect With Us</h2>
+            <p class="section-subtitle">Have questions, need assistance, or ready to book? We're here to help.</p>
+
+            <div class="contact-grid">
+                <div class="contact-info animate-on-scroll">
+                    <h3>Reach Out Directly</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Jharkhand Tourism Department, Ranchi, India</p>
+                    <p><i class="fas fa-phone"></i> +91 123 456 7890</p>
+                    <p><i class="fas fa-envelope"></i> info@jharkhandtourism.gov.in</p>
+                    <div class="social-links mt-4">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form animate-on-scroll">
+                    <h3>Send us a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary-light">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="animated-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Tourism information</h3>
+                <ul>
+                    <li><a href="#">News/Latest updates</a></li>
+                    <li><a href="#">Tourist Attraction</a></li>
+                    <li><a href="#">Tourist statistics</a></li>
+                    <li><a href="#">Weather</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Downloads</h3>
+                <ul>
+                    <li><a href="#">Local navigation app</a></li>
+                    <li><a href="#">Local weather app</a></li>
+                    <li><a href="#">Translation app</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Policies/ Schemes/ Acts/ Rules & Regulation</h3>
+                <ul>
+                    <li><a href="#">Research purposes</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Other website links</h3>
+                <ul>
+                    <li><a href="#">Government of India</a></li>
+                    <li><a href="#">Government of Jharkhand</a></li>
+                    <li><a href="#">Tourist Portal</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Essentials 🌎</h3>
+                <ul>
+                    <li><a href="#">Yet</a></li>
+                    <li><a href="#">To</a></li>
+                    <li><a href="#">Decide</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Gallery 📸</h3>
+                <ul>
+                    <li><a href="#">Images</a></li>
+                    <li><a href="#">Videos</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Helpline Numbers</h3>
+                <ul>
+                    <li><a href="#">Local police</a></li>
+                    <li><a href="#">Women helpline</a></li>
+                    <li><a href="#">Ambulance, Etc.</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Tourist related</h3>
+                <ul>
+                    <li><a href="#">Do's and Don'ts</a></li>
+                    <li><a href="#">Travel safety</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- This is where the animated elements will be generated -->
+        <div class="footer-animation-container"></div>
+    </footer>
+
+    <script src="../JS/index.js"></script>
 </body>
 </html>
