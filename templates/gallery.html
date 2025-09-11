@@ -1,34 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discover Jharkhand: A Visual Journey</title>
-    <link rel="stylesheet" href="../CSS/gallery.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
-
-    <header class="main-header">
-        <div class="container">
-            <div class="logo">
-                <a>Jharkhand <span class="highlight">Tourism</span></a>
-            </div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="../HTML/index.html" class="nav-link">Home</a></li>
-                    <li><a href="../HTML/destinations.html" class="nav-link">Destinations</a></li>
-                    <li><a href="../HTML/planner.html" class="nav-link">Plan Your Trip</a></li>
-                    <li><a href="../HTML/gallery.html" class="nav-link">Gallery</a></li>
-                    <li><a href="../HTML/contact.html" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </header>
-
+{% extends 'base.html' %}
+{% block title %}Gallery - Jharkhand Tourism{% endblock title %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/gallery.css">
+{% endblock css %}
+{% block js %}
+    <script src="/static/js/gallery.js"></script>
+{% endblock js %}
+{% block body %}
     <main>
         <section class="hero-section">
             <div class="hero-content">
@@ -93,75 +71,5 @@
         <img class="lightbox-content" id="lightboxImg" src="" alt="">
         <div id="caption" class="caption"></div>
     </div>
-
-    <footer class="animated-footer">
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>Tourism information</h3>
-                <ul>
-                    <li><a href="#">News/Latest updates</a></li>
-                    <li><a href="#">Tourist Attraction</a></li>
-                    <li><a href="#">Tourist statistics</a></li>
-                    <li><a href="#">Weather</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Downloads</h3>
-                <ul>
-                    <li><a href="#">Local navigation app</a></li>
-                    <li><a href="#">Local weather app</a></li>
-                    <li><a href="#">Translation app</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Policies/ Schemes/ Acts/ Rules & Regulation</h3>
-                <ul>
-                    <li><a href="#">Research purposes</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Other website links</h3>
-                <ul>
-                    <li><a href="#">Government of India</a></li>
-                    <li><a href="#">Government of Jharkhand</a></li>
-                    <li><a href="#">Tourist Portal</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Essentials 🌎</h3>
-                <ul>
-                    <li><a href="#">Yet</a></li>
-                    <li><a href="#">To</a></li>
-                    <li><a href="#">Decide</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Gallery 📸</h3>
-                <ul>
-                    <li><a href="#">Images</a></li>
-                    <li><a href="#">Videos</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Helpline Numbers</h3>
-                <ul>
-                    <li><a href="#">Local police</a></li>
-                    <li><a href="#">Women helpline</a></li>
-                    <li><a href="#">Ambulance, Etc.</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Tourist related</h3>
-                <ul>
-                    <li><a href="#">Do's and Don'ts</a></li>
-                    <li><a href="#">Travel safety</a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- This is where the animated elements will be generated -->
-        <div class="footer-animation-container"></div>
-    </footer>
-
-    <script src="../JS/gallery.js"></script>
-</body>
-</html>
+{% endblock body %}
+    

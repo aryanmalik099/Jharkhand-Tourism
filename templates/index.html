@@ -1,38 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jharkhand Tourism - Explore the Untouched Heart of India</title>
+{% extends 'base.html' %}
+{% block title %}Jharkhand Tourism - Explore the Untouched Heart of India{% endblock title %}
+{% block css %}
     <link rel="stylesheet" href="/static/css/index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
-    <header class="main-header">
-        <div class="container">
-            <div class="logo">
-            <a href="{{url_for('home')}}">Jharkhand <span class="highlight">Tourism</span></a>
-            </div>
-            <nav class="main-nav">
-            <ul class="nav-list">
-                <li><a href="../HTML/index.html" class="nav-link">Home</a></li>
-                <li><a href="../HTML/destinations.html" class="nav-link">Destinations</a></li>
-                <li><a href="../HTML/planner.html" class="nav-link">Plan Your Trip</a></li>
-                <li><a href="../HTML/gallery.html" class="nav-link">Gallery</a></li>
-                <li><a href="../HTML/contact.html" class="nav-link">Contact</a></li>
-            </ul>
-            </nav>
-            <div class="hamburger">
-            <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </header>
-    code
-    Code
+{% endblock css %}
+{% block js %}
+    <script src="/static/js/index.js"></script>
+{% endblock js %}
+{% block body %}
     <section id="home" class="hero-section">
         <video class="hero-video" autoplay muted loop playsinline>
-            <source src="../IMG/jharkhand.mp4" type="video/mp4">
+            <source src="/static/images/jharkhand.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <div class="hero-content">
@@ -126,7 +103,7 @@
                 </div>
             </div>
             <div class="text-center mt-5">
-                <a href="../HTML/destinations.html" class="btn btn-primary-outline">View All Destinations</a>
+                <a href="{{url_for ('destinations')}}" class="btn btn-primary-outline">View All Destinations</a>
             </div>
         </div>
     </section>
@@ -205,7 +182,7 @@
                 </div>
             </div>
             <div class="text-center mt-5">
-                <a href="../HTML/gallery.html" class="btn btn-primary-outline">View All Photos</a>
+                <a href="{{url_for ('gallery')}}" class="btn btn-primary-outline">View All Photos</a>
             </div>
         </div>
     </section>
@@ -297,75 +274,4 @@
             </div>
         </div>
     </section>
-
-    <footer class="animated-footer">
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>Tourism information</h3>
-                <ul>
-                    <li><a href="#">News/Latest updates</a></li>
-                    <li><a href="#">Tourist Attraction</a></li>
-                    <li><a href="#">Tourist statistics</a></li>
-                    <li><a href="#">Weather</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Downloads</h3>
-                <ul>
-                    <li><a href="#">Local navigation app</a></li>
-                    <li><a href="#">Local weather app</a></li>
-                    <li><a href="#">Translation app</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Policies/ Schemes/ Acts/ Rules & Regulation</h3>
-                <ul>
-                    <li><a href="#">Research purposes</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Other website links</h3>
-                <ul>
-                    <li><a href="#">Government of India</a></li>
-                    <li><a href="#">Government of Jharkhand</a></li>
-                    <li><a href="#">Tourist Portal</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Essentials 🌎</h3>
-                <ul>
-                    <li><a href="#">Yet</a></li>
-                    <li><a href="#">To</a></li>
-                    <li><a href="#">Decide</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Gallery 📸</h3>
-                <ul>
-                    <li><a href="#">Images</a></li>
-                    <li><a href="#">Videos</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Helpline Numbers</h3>
-                <ul>
-                    <li><a href="#">Local police</a></li>
-                    <li><a href="#">Women helpline</a></li>
-                    <li><a href="#">Ambulance, Etc.</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Tourist related</h3>
-                <ul>
-                    <li><a href="#">Do's and Don'ts</a></li>
-                    <li><a href="#">Travel safety</a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- This is where the animated elements will be generated -->
-        <div class="footer-animation-container"></div>
-    </footer>
-
-    <script src="../JS/index.js"></script>
-</body>
-</html>
+{% endblock body %}

@@ -6,9 +6,6 @@ import re
 
 app = Flask(__name__)
 
-
-app = Flask(__name__)
-
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'Pass4@ryan'
@@ -92,6 +89,10 @@ def gallery():
 @app.route('/destinations')
 def destinations():
     return render_template('destinations.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 
 
