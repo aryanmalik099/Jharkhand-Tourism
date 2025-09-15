@@ -10,7 +10,7 @@
     {% block css %}{% endblock css %}
 </head>
 <body>
-    {% if page not in ['auth'] %}
+    {% if page not in ['auth', 'profile'] %}
         <header class="main-header">
             <div class="container">
                 <div class="logo">
@@ -23,7 +23,7 @@
                     <li><a href="{{url_for ('planner')}}" class="nav-link">Plan Your Trip</a></li>
                     <li><a href="{{url_for ('gallery')}}" class="nav-link">Gallery</a></li>
                     {% if session.get('loggedin') %}
-                        <li class="logout"><a href="{{url_for ('logout')}}" class="nav-link link-danger">Logout</a></li>
+                        <li class="logout"><a href="{{url_for ('profile')}}" class="nav-link link-danger">Profile</a></li>
                     {% else %}
                         <li class="login"><a href="{{url_for ('auth')}}" class="nav-link link-success">Login</a></li>
                     {% endif %}
@@ -39,7 +39,7 @@
     {% block body %}
         
     {% endblock body %}
-    {% if page not in ['auth'] %}
+    {% if page not in ['auth', 'profile'] %}
         <footer class="animated-footer">
             <div class="footer-content">
                 <div class="footer-column">

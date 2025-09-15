@@ -26,8 +26,8 @@ def auth():
         action = request.form.get('action')
 
         if action == 'login':
-            username = request.form['login_username']
-            password = request.form['login_password']
+            username = request.form.get('login_username')
+            password = request.form.get('login_password')
 
             cur = mysql.connection.cursor()
             cur.execute("SELECT * FROM accounts WHERE username = %s AND password = %s", (username, password))
@@ -36,15 +36,15 @@ def auth():
             if acc:
                 session['loggedin'] = True
                 session['id'] = acc[0]
-                session['username'] = acc[1]
-                return redirect(url_for('home'))
+                session['username'] = acc[1]  # Store username in session
+                return redirect(url_for('home'))  # Redirect to profile after login
             else:
                 msg = 'Invalid Login Credentials'
 
         elif action == 'register':
-            username = request.form['register_username']
-            email = request.form['register_email']
-            password = request.form['register_password']
+            username = request.form.get('register_username')
+            email = request.form.get('register_email')
+            password = request.form.get('register_password')
 
             cur = mysql.connection.cursor()
             cur.execute("SELECT * FROM accounts WHERE username = %s", (username,))
@@ -52,7 +52,7 @@ def auth():
 
             if acc:
                 msg = 'Account already exists!'
-            elif re.match(r'[^@]+@[^@]+\.[^@]+', email) is None:
+            elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
                 msg = 'Invalid email address!'
             elif not re.match(r'[A-Za-z0-9]+', username):
                 msg = 'Username must contain only characters and numbers!'
@@ -69,12 +69,21 @@ def auth():
     return render_template('auth.html', msg=msg, page='auth')
 
 
+
 @app.route('/logout')
 def logout():
     session.pop('loggedin', None)
     session.pop('id', None)
     session.pop('username', None)
-    return redirect(url_for('home'))
+    return redirect(url_for('auth'))
+
+@app.route('/profile')
+def profile():
+    if 'loggedin' in session:
+        return render_template('profile.html', username=session['username'], page='profile')
+    else:
+        return redirect()
+    return redirect(url_for('auth'))
 
 
 @app.route('/planner')

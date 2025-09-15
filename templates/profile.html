@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block css %}
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/profile.css">
+{% endblock css %}
+
+{% block body %}
+
+<div class="container">
+
+    <h1>Welcome, {{ username }}!</h1>
+
+    <p><strong>Username:</strong> {{ username }}</p>
+
+    <form action="{{ url_for('logout') }}" method="get">
+        <button type="submit">Logout</button>
+    </form>
+
+</div>
+
+{% endblock body %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='profile.js') }}"></script>
+{% endblock scripts %}
