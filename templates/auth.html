@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block css %}
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/login.css">
+{% endblock css %}
+
+{% block body %}
+
+<div class="container" id="container">
+
+    <!-- Sign Up -->
+    <div class="form-container sign-up-container">
+        <form action="{{ url_for('auth') }}" method="post">
+            <input type="hidden" name="action" value="register">
+            <h1>Create Account</h1>
+            <input type="text" placeholder="Username" name="register_username" required />
+            <input type="email" placeholder="Email" name="register_email" required />
+            <input type="password" placeholder="Password" name="register_password" required />
+            <button type="submit">Register</button>
+            {% if msg and 'registered' in msg %}
+                <p style="color:green;">{{ msg }}</p>
+            {% elif msg %}
+                <p style="color:red;">{{ msg }}</p>
+            {% endif %}
+        </form>
+    </div>
+
+    <!-- Sign In -->
+    <div class="form-container sign-in-container">
+        <form action="{{ url_for('auth') }}" method="post">
+            <input type="hidden" name="action" value="login">
+            <h1>Sign in</h1>
+            <input type="text" placeholder="Username" name="login_username" required />
+            <input type="password" placeholder="Password" name="login_password" required />
+            <button type="submit">Login</button>
+            {% if msg and 'registered' not in msg %}
+                <p style="color:red;">{{ msg }}</p>
+            {% endif %}
+        </form>
+    </div>
+
+    <!-- Overlay Panels -->
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Welcome Back!</h1>
+                <p>To keep connected with us please login with your personal info</p>
+                <button class="ghost" id="signIn">Sign In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Hello, Friend!</h1>
+                <p>Enter your personal details and start your journey with us</p>
+                <button class="ghost" id="signUp">Register</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const container = document.getElementById('container');
+
+    signUpButton.addEventListener('click', () => {
+        container.classList.add("right-panel-active");
+    });
+
+    signInButton.addEventListener('click', () => {
+        container.classList.remove("right-panel-active");
+    });
+</script>
+
+{% endblock body %}

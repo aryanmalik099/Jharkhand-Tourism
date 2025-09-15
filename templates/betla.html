@@ -3,241 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Betla National Park - Jharkhand Tourism</title>
-    <link rel="stylesheet" href="../CSS/destinations.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <title> - Jharkhand Tourism</title>
     <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
-    <header class="main-header" id="mainHeader">
+{% extends 'base.html' %}
+{% block title %}Betla National Park{% endblock title %}
+{% block css %}
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/destinations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+{% endblock css %}
+{% block js %}
+    <script src="/static/js/destinations.js"></script>
+{% endblock js %}
+{% block body %}
+    <section class="hero-section" id="home">
+        <div class="hero-content fade-in-up">
+            <p class="hero-subtitle">Discover Nature's Masterpiece</p>
+            <h2>Betla National Park</h2>
+            <p class="hero-description">A pristine habitat where the wild calls and nature thrives, offering an unforgettable escape into the heart of Jharkhand's wilderness.</p>
+            <a href="#about" class="btn-primary">Explore Betla <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <section id="about" class="about-section container section-padding">
+        <div class="about-image reveal-left">
+            <img src="https://via.placeholder.com/600x400/8bc34a/ffffff?text=Betla+Landscape" alt="Lush landscape of Betla National Park">
+        </div>
+        <div class="about-content reveal-right">
+            <h3 class="section-title">Journey into Betla's Heart</h3>
+            <p>Betla National Park, nestled in the picturesque Palamu hills of Jharkhand, stands as one of India's pioneering tiger reserves. Spanning diverse terrains from dense tropical forests to cascading waterfalls, it's a vibrant ecosystem teeming with life. This sanctuary is a true jewel for wildlife enthusiasts and a beacon for those seeking tranquility amidst nature.</p>
+            <p>Beyond the majestic tigers, Betla is a stronghold for Asian elephants, leopards, sloth bears, and an impressive array of deer species. Its skies are graced by over 170 species of birds, making it a birder's paradise where even rare hornbills can be spotted.</p>
+            <a href="#highlights" class="btn-text">View Key Highlights <i class="fas fa-chevron-right"></i></a>
+        </div>
+    </section>
+
+    <!-- New: Weather Widget Section -->
+    <section class="weather-section section-padding-small bg-light">
+        <div class="container text-center">
+            <h3 class="section-title-small">Current Weather in Betla</h3>
+            <div id="weatherWidget" class="weather-widget reveal-bottom">
+                <div class="loading-spinner"></div>
+                <!-- Weather data will be loaded here by JavaScript -->
+            </div>
+            <p class="weather-notice">Powered by OpenWeatherMap (API key required for live data).</p>
+        </div>
+    </section>
+
+    <section id="highlights" class="highlights-section section-padding">
         <div class="container">
-            <div class="logo">
-                <a href="#home">Jharkhand <span class="highlight">Tourism</span></a>
-            </div>
-            <nav class="main-nav">
-                <ul class="nav-list" role="menu">
-                    <li role="menuitem"><a href="../HTML/index.html" class="nav-link">Home</a></li>
-                    <li role="menuitem"><a href="../HTML/destinations.html" class="nav-link current-page">Destinations</a></li>
-                    <li role="menuitem"><a href="../HTML/planner.html" class="nav-link">Plan Your Trip</a></li>
-                    <li role="menuitem"><a href="../HTML/gallery.html" class="nav-link">Gallery</a></li>
-                    <li role="menuitem"><a href="../HTML/contact.html" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="hamburger" id="hamburgerMenu" aria-label="Toggle navigation menu" aria-expanded="false">
-                <i class="fas fa-bars"></i>
+            <h3 class="section-title text-center">Experience the Best of Betla</h3>
+            <div class="highlights-grid">
+                <div class="highlight-item fade-in-delay" style="--delay: 0s;">
+                    <i class="fas fa-paw icon-large"></i>
+                    <h4>Thrilling Wildlife Safaris</h4>
+                    <p>Embark on guided jeep safaris through the core zones, offering unparalleled chances to encounter tigers, elephants, and other magnificent wildlife in their natural habitat.</p>
+                </div>
+                <div class="highlight-item fade-in-delay" style="--delay: 0.15s;">
+                    <i class="fas fa-water icon-large"></i>
+                    <h4>Enchanting Waterfalls & Trails</h4>
+                    <p>Discover the breathtaking beauty of Lodh Falls, Jharkhand's highest waterfall, and explore serene forest trails ideal for nature walks and photography.</p>
+                </div>
+                <div class="highlight-item fade-in-delay" style="--delay: 0.3s;">
+                    <i class="fas fa-fort-awesome-alt icon-large"></i>
+                    <h4>Ancient Palamu Forts</h4>
+                    <p>Delve into history within the park's boundaries by visiting the majestic Palamu Forts, ancient structures that tell tales of erstwhile dynasties.</p>
+                </div>
+                <div class="highlight-item fade-in-delay" style="--delay: 0.45s;">
+                    <i class="fas fa-bird icon-large"></i>
+                    <h4>Birdwatcher's Paradise</h4>
+                    <p>With over 170 avian species, Betla offers a fantastic opportunity for birdwatching, from vibrant kingfishers to elusive hornbills.</p>
+                </div>
             </div>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <section class="hero-section" id="home">
-            <div class="hero-content fade-in-up">
-                <p class="hero-subtitle">Discover Nature's Masterpiece</p>
-                <h2>Betla National Park</h2>
-                <p class="hero-description">A pristine habitat where the wild calls and nature thrives, offering an unforgettable escape into the heart of Jharkhand's wilderness.</p>
-                <a href="#about" class="btn-primary">Explore Betla <i class="fas fa-arrow-right"></i></a>
+    <section class="gallery-section container section-padding">
+        <h3 class="section-title text-center">A Glimpse of Betla's Beauty</h3>
+        <div class="image-grid" id="imageGrid">
+            <!-- Images loaded here will be interactive -->
+            <div class="gallery-item zoom-in-delay" style="--delay: 0s;">
+                <img src="https://via.placeholder.com/600x450/607d8b/ffffff?text=Majestic+Tiger" data-large-src="https://via.placeholder.com/1200x900/607d8b/ffffff?text=Majestic+Tiger+Large" alt="Majestic Tiger in Betla National Park">
+                <div class="gallery-overlay">Tiger</div>
             </div>
-        </section>
-
-        <section id="about" class="about-section container section-padding">
-            <div class="about-image reveal-left">
-                <img src="https://via.placeholder.com/600x400/8bc34a/ffffff?text=Betla+Landscape" alt="Lush landscape of Betla National Park">
+            <div class="gallery-item zoom-in-delay" style="--delay: 0.1s;">
+                <img src="https://via.placeholder.com/600x450/795548/ffffff?text=Wild+Elephant" data-large-src="https://via.placeholder.com/1200x900/795548/ffffff?text=Wild+Elephant+Large" alt="Wild Elephant in Betla National Park">
+                <div class="gallery-overlay">Elephant Herd</div>
             </div>
-            <div class="about-content reveal-right">
-                <h3 class="section-title">Journey into Betla's Heart</h3>
-                <p>Betla National Park, nestled in the picturesque Palamu hills of Jharkhand, stands as one of India's pioneering tiger reserves. Spanning diverse terrains from dense tropical forests to cascading waterfalls, it's a vibrant ecosystem teeming with life. This sanctuary is a true jewel for wildlife enthusiasts and a beacon for those seeking tranquility amidst nature.</p>
-                <p>Beyond the majestic tigers, Betla is a stronghold for Asian elephants, leopards, sloth bears, and an impressive array of deer species. Its skies are graced by over 170 species of birds, making it a birder's paradise where even rare hornbills can be spotted.</p>
-                <a href="#highlights" class="btn-text">View Key Highlights <i class="fas fa-chevron-right"></i></a>
+            <div class="gallery-item zoom-in-delay" style="--delay: 0.2s;">
+                <img src="https://via.placeholder.com/600x450/4caf50/ffffff?text=Lodh+Falls" data-large-src="https://via.placeholder.com/1200x900/4caf50/ffffff?text=Lodh+Falls+Large" alt="Lodh Falls in Betla National Park">
+                <div class="gallery-overlay">Lodh Falls</div>
             </div>
-        </section>
-
-        <!-- New: Weather Widget Section -->
-        <section class="weather-section section-padding-small bg-light">
-            <div class="container text-center">
-                <h3 class="section-title-small">Current Weather in Betla</h3>
-                <div id="weatherWidget" class="weather-widget reveal-bottom">
-                    <div class="loading-spinner"></div>
-                    <!-- Weather data will be loaded here by JavaScript -->
-                </div>
-                <p class="weather-notice">Powered by OpenWeatherMap (API key required for live data).</p>
+            <div class="gallery-item zoom-in-delay" style="--delay: 0.3s;">
+                <img src="https://via.placeholder.com/600x450/546e7a/ffffff?text=Palamu+Fort" data-large-src="https://via.placeholder.com/1200x900/546e7a/ffffff?text=Palamu+Fort+Large" alt="Ancient Palamu Fort ruins">
+                <div class="gallery-overlay">Palamu Fort</div>
             </div>
-        </section>
-
-        <section id="highlights" class="highlights-section section-padding">
-            <div class="container">
-                <h3 class="section-title text-center">Experience the Best of Betla</h3>
-                <div class="highlights-grid">
-                    <div class="highlight-item fade-in-delay" style="--delay: 0s;">
-                        <i class="fas fa-paw icon-large"></i>
-                        <h4>Thrilling Wildlife Safaris</h4>
-                        <p>Embark on guided jeep safaris through the core zones, offering unparalleled chances to encounter tigers, elephants, and other magnificent wildlife in their natural habitat.</p>
-                    </div>
-                    <div class="highlight-item fade-in-delay" style="--delay: 0.15s;">
-                        <i class="fas fa-water icon-large"></i>
-                        <h4>Enchanting Waterfalls & Trails</h4>
-                        <p>Discover the breathtaking beauty of Lodh Falls, Jharkhand's highest waterfall, and explore serene forest trails ideal for nature walks and photography.</p>
-                    </div>
-                    <div class="highlight-item fade-in-delay" style="--delay: 0.3s;">
-                        <i class="fas fa-fort-awesome-alt icon-large"></i>
-                        <h4>Ancient Palamu Forts</h4>
-                        <p>Delve into history within the park's boundaries by visiting the majestic Palamu Forts, ancient structures that tell tales of erstwhile dynasties.</p>
-                    </div>
-                    <div class="highlight-item fade-in-delay" style="--delay: 0.45s;">
-                        <i class="fas fa-bird icon-large"></i>
-                        <h4>Birdwatcher's Paradise</h4>
-                        <p>With over 170 avian species, Betla offers a fantastic opportunity for birdwatching, from vibrant kingfishers to elusive hornbills.</p>
-                    </div>
-                </div>
+            <div class="gallery-item zoom-in-delay" style="--delay: 0.4s;">
+                <img src="https://via.placeholder.com/600x450/ffb74d/ffffff?text=Deer+Herd" data-large-src="https://via.placeholder.com/1200x900/ffb74d/ffffff?text=Deer+Herd+Large" alt="Deer grazing in Betla National Park">
+                <div class="gallery-overlay">Deer Herd</div>
             </div>
-        </section>
-
-        <section class="gallery-section container section-padding">
-            <h3 class="section-title text-center">A Glimpse of Betla's Beauty</h3>
-            <div class="image-grid" id="imageGrid">
-                <!-- Images loaded here will be interactive -->
-                <div class="gallery-item zoom-in-delay" style="--delay: 0s;">
-                    <img src="https://via.placeholder.com/600x450/607d8b/ffffff?text=Majestic+Tiger" data-large-src="https://via.placeholder.com/1200x900/607d8b/ffffff?text=Majestic+Tiger+Large" alt="Majestic Tiger in Betla National Park">
-                    <div class="gallery-overlay">Tiger</div>
-                </div>
-                <div class="gallery-item zoom-in-delay" style="--delay: 0.1s;">
-                    <img src="https://via.placeholder.com/600x450/795548/ffffff?text=Wild+Elephant" data-large-src="https://via.placeholder.com/1200x900/795548/ffffff?text=Wild+Elephant+Large" alt="Wild Elephant in Betla National Park">
-                    <div class="gallery-overlay">Elephant Herd</div>
-                </div>
-                <div class="gallery-item zoom-in-delay" style="--delay: 0.2s;">
-                    <img src="https://via.placeholder.com/600x450/4caf50/ffffff?text=Lodh+Falls" data-large-src="https://via.placeholder.com/1200x900/4caf50/ffffff?text=Lodh+Falls+Large" alt="Lodh Falls in Betla National Park">
-                    <div class="gallery-overlay">Lodh Falls</div>
-                </div>
-                <div class="gallery-item zoom-in-delay" style="--delay: 0.3s;">
-                    <img src="https://via.placeholder.com/600x450/546e7a/ffffff?text=Palamu+Fort" data-large-src="https://via.placeholder.com/1200x900/546e7a/ffffff?text=Palamu+Fort+Large" alt="Ancient Palamu Fort ruins">
-                    <div class="gallery-overlay">Palamu Fort</div>
-                </div>
-                <div class="gallery-item zoom-in-delay" style="--delay: 0.4s;">
-                    <img src="https://via.placeholder.com/600x450/ffb74d/ffffff?text=Deer+Herd" data-large-src="https://via.placeholder.com/1200x900/ffb74d/ffffff?text=Deer+Herd+Large" alt="Deer grazing in Betla National Park">
-                    <div class="gallery-overlay">Deer Herd</div>
-                </div>
-                <div class="gallery-item zoom-in-delay" style="--delay: 0.5s;">
-                    <img src="https://via.placeholder.com/600x450/8d6e63/ffffff?text=Forest+Path" data-large-src="https://via.placeholder.com/1200x900/8d6e63/ffffff?text=Forest+Path+Large" alt="Lush forest path in Betla National Park">
-                    <div class="gallery-overlay">Forest Trail</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- New: Testimonials Section -->
-        <section class="testimonials-section section-padding bg-light">
-            <div class="container text-center">
-                <h3 class="section-title">What Our Visitors Say</h3>
-                <div class="testimonial-carousel reveal-bottom">
-                    <div class="testimonial-item active">
-                        <p class="quote">"Betla National Park was an absolute marvel! The safari was thrilling, and seeing a tiger in its natural habitat was a dream come true. Highly recommend for nature lovers."</p>
-                        <p class="author">- Priya Sharma, Mumbai</p>
-                    </div>
-                    <div class="testimonial-item">
-                        <p class="quote">"A truly serene and beautiful place. The Lodh Falls are breathtaking, and the ancient forts add a unique historical dimension to the wildlife experience. We loved every moment!"</p>
-                        <p class="author">- David Lee, New York</p>
-                    </div>
-                    <div class="testimonial-item">
-                        <p class="quote">"Birdwatching in Betla was incredible. So many species, and the guides were very knowledgeable. It's a peaceful escape from city life."</p>
-                        <p class="author">- Aisha Khan, Delhi</p>
-                    </div>
-                    <div class="carousel-nav">
-                        <button class="prev" aria-label="Previous testimonial"><i class="fas fa-chevron-left"></i></button>
-                        <button class="next" aria-label="Next testimonial"><i class="fas fa-chevron-right"></i></button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- New: Interactive Map Section -->
-        <section class="map-section container section-padding">
-            <h3 class="section-title text-center">Find Betla National Park</h3>
-            <div class="map-container reveal-bottom">
-                <!-- Replace with your actual Google Maps embed code or Leaflet map -->
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14619.67035546059!2d84.1878954751737!3d23.90562916781292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398c8c5a4b4e76a3%3A0x67a9a1d9b0e2d30!2sBetla%20National%20Park!5e0!3m2!1sen!2sin!4v1701886888497!5m2!1sen!2sin"
-                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                    title="Location of Betla National Park on Google Maps">
-                </iframe>
-            </div>
-        </section>
-
-        <section class="cta-section section-padding">
-            <div class="container text-center">
-                <h3 class="section-title light">Ready for Your Wild Adventure?</h3>
-                <p>Don't just dream about it, experience the untamed beauty of Betla National Park. Plan your unforgettable journey today!</p>
-                <a href="../HTML/planner.html" class="btn-hero pulse-animate">Plan Your Visit Now <i class="fas fa-calendar-alt"></i></a>
-            </div>
-        </section>
-    </main>
-
-    <footer class="animated-footer">
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>Tourism information</h3>
-                <ul>
-                    <li><a href="#">News/Latest updates</a></li>
-                    <li><a href="#">Tourist Attraction</a></li>
-                    <li><a href="#">Tourist statistics</a></li>
-                    <li><a href="#">Weather</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Downloads</h3>
-                <ul>
-                    <li><a href="#">Local navigation app</a></li>
-                    <li><a href="#">Local weather app</a></li>
-                    <li><a href="#">Translation app</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Policies/ Schemes/ Acts/ Rules & Regulation</h3>
-                <ul>
-                    <li><a href="#">Research purposes</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Other website links</h3>
-                <ul>
-                    <li><a href="#">Government of India</a></li>
-                    <li><a href="#">Government of Jharkhand</a></li>
-                    <li><a href="#">Tourist Portal</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Essentials 🌎</h3>
-                <ul>
-                    <li><a href="#">Yet</a></li>
-                    <li><a href="#">To</a></li>
-                    <li><a href="#">Decide</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Gallery 📸</h3>
-                <ul>
-                    <li><a href="#">Images</a></li>
-                    <li><a href="#">Videos</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Helpline Numbers</h3>
-                <ul>
-                    <li><a href="#">Local police</a></li>
-                    <li><a href="#">Women helpline</a></li>
-                    <li><a href="#">Ambulance, Etc.</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Tourist related</h3>
-                <ul>
-                    <li><a href="#">Do's and Don'ts</a></li>
-                    <li><a href="#">Travel safety</a></li>
-                </ul>
+            <div class="gallery-item zoom-in-delay" style="--delay: 0.5s;">
+                <img src="https://via.placeholder.com/600x450/8d6e63/ffffff?text=Forest+Path" data-large-src="https://via.placeholder.com/1200x900/8d6e63/ffffff?text=Forest+Path+Large" alt="Lush forest path in Betla National Park">
+                <div class="gallery-overlay">Forest Trail</div>
             </div>
         </div>
-        <!-- This is where the animated elements will be generated -->
-        <div class="footer-animation-container"></div>
-    </footer>
+    </section>
 
-    <script src="../JS/destinations.js"></script>
-</body>
-</html>
+    <!-- New: Testimonials Section -->
+    <section class="testimonials-section section-padding bg-light">
+        <div class="container text-center">
+            <h3 class="section-title">What Our Visitors Say</h3>
+            <div class="testimonial-carousel reveal-bottom">
+                <div class="testimonial-item active">
+                    <p class="quote">"Betla National Park was an absolute marvel! The safari was thrilling, and seeing a tiger in its natural habitat was a dream come true. Highly recommend for nature lovers."</p>
+                    <p class="author">- Priya Sharma, Mumbai</p>
+                </div>
+                <div class="testimonial-item">
+                    <p class="quote">"A truly serene and beautiful place. The Lodh Falls are breathtaking, and the ancient forts add a unique historical dimension to the wildlife experience. We loved every moment!"</p>
+                    <p class="author">- David Lee, New York</p>
+                </div>
+                <div class="testimonial-item">
+                    <p class="quote">"Birdwatching in Betla was incredible. So many species, and the guides were very knowledgeable. It's a peaceful escape from city life."</p>
+                    <p class="author">- Aisha Khan, Delhi</p>
+                </div>
+                <div class="carousel-nav">
+                    <button class="prev" aria-label="Previous testimonial"><i class="fas fa-chevron-left"></i></button>
+                    <button class="next" aria-label="Next testimonial"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New: Interactive Map Section -->
+    <section class="map-section container section-padding">
+        <h3 class="section-title text-center">Find Betla National Park</h3>
+        <div class="map-container reveal-bottom">
+            <!-- Replace with your actual Google Maps embed code or Leaflet map -->
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14619.67035546059!2d84.1878954751737!3d23.90562916781292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398c8c5a4b4e76a3%3A0x67a9a1d9b0e2d30!2sBetla%20National%20Park!5e0!3m2!1sen!2sin!4v1701886888497!5m2!1sen!2sin"
+                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                title="Location of Betla National Park on Google Maps">
+            </iframe>
+        </div>
+    </section>
+
+    <section class="cta-section section-padding">
+        <div class="container text-center">
+            <h3 class="section-title light">Ready for Your Wild Adventure?</h3>
+            <p>Don't just dream about it, experience the untamed beauty of Betla National Park. Plan your unforgettable journey today!</p>
+            <a href="../HTML/planner.html" class="btn-hero pulse-animate">Plan Your Visit Now <i class="fas fa-calendar-alt"></i></a>
+        </div>
+    </section>
+{% endblock body %}
+ 
