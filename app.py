@@ -35,7 +35,7 @@ def login():
             return redirect(url_for('home'))
         else:
             msg = 'Invalid Credentials'
-    return render_template('login.html',msg=msg)
+    return render_template('login.html',msg=msg,page = 'login')
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -66,7 +66,7 @@ def register():
             cur.connection.commit()
             msg = 'You have successfully registered!'
             return render_template('login.html', msg=msg)
-    return render_template('register.html', msg=msg)
+    return render_template('register.html', msg=msg, page = 'register')
 
 
 @app.route('/logout')

@@ -10,100 +10,105 @@
     {% block css %}{% endblock css %}
 </head>
 <body>
-    <header class="main-header">
-        <div class="container">
-            <div class="logo">
-            <a href="{{url_for('home')}}">Jharkhand <span class="highlight">Tourism</span></a>
+    {% if page not in ['login', 'register'] %}
+        <header class="main-header">
+            <div class="container">
+                <div class="logo">
+                <a href="{{url_for('home')}}">Jharkhand <span class="highlight">Tourism</span></a>
+                </div>
+                <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="{{url_for ('home')}}" class="nav-link">Home</a></li>
+                    <li><a href="{{url_for ('destinations')}}" class="nav-link">Destinations</a></li>
+                    <li><a href="{{url_for ('planner')}}" class="nav-link">Plan Your Trip</a></li>
+                    <li><a href="{{url_for ('gallery')}}" class="nav-link">Gallery</a></li>
+                    <li><a href="{{url_for ('contact')}}" class="nav-link">Contact</a></li>
+                    {% if session.get('loggedin') %}
+                        <li class="logout"><a href="{{url_for ('logout')}}" class="nav-link link-danger">Logout</a></li>
+                    {% else %}
+                        <li class="login"><a href="{{url_for ('login')}}" class="nav-link link-success">Login</a></li>
+                    {% endif %}
+                </ul>
+                </nav>
+                <div class="hamburger">
+                <i class="fas fa-bars"></i>
+                </div>
             </div>
-            <nav class="main-nav">
-            <ul class="nav-list">
-                <li><a href="{{url_for ('home')}}" class="nav-link">Home</a></li>
-                <li><a href="{{url_for ('destinations')}}" class="nav-link">Destinations</a></li>
-                <li><a href="{{url_for ('planner')}}" class="nav-link">Plan Your Trip</a></li>
-                <li><a href="{{url_for ('gallery')}}" class="nav-link">Gallery</a></li>
-                <li><a href="{{url_for ('contact')}}" class="nav-link">Contact</a></li>
-                {% if session.get('loggedin') %}
-                    <li class="logout"><a href="{{url_for ('logout')}}" class="nav-link link-danger">Logout</a></li>
-                {% else %}
-                    <li class="login"><a href="{{url_for ('login')}}" class="nav-link link-success">Login</a></li>
-                {% endif %}
-            </ul>
-            </nav>
-            <div class="hamburger">
-            <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </header>
+        </header>
+    {% endif %}
+    
     {% block body %}
         
     {% endblock body %}
-    <footer class="animated-footer">
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>Tourism information</h3>
-                <ul>
-                    <li><a href="#">News/Latest updates</a></li>
-                    <li><a href="#">Tourist Attraction</a></li>
-                    <li><a href="#">Tourist statistics</a></li>
-                    <li><a href="#">Weather</a></li>
-                </ul>
+    {% if page not in ['login', 'register'] %}
+        <footer class="animated-footer">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Tourism information</h3>
+                    <ul>
+                        <li><a href="#">News/Latest updates</a></li>
+                        <li><a href="#">Tourist Attraction</a></li>
+                        <li><a href="#">Tourist statistics</a></li>
+                        <li><a href="#">Weather</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Downloads</h3>
+                    <ul>
+                        <li><a href="#">Local navigation app</a></li>
+                        <li><a href="#">Local weather app</a></li>
+                        <li><a href="#">Translation app</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Policies/ Schemes/ Acts/ Rules & Regulation</h3>
+                    <ul>
+                        <li><a href="#">Research purposes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Other website links</h3>
+                    <ul>
+                        <li><a href="#">Government of India</a></li>
+                        <li><a href="#">Government of Jharkhand</a></li>
+                        <li><a href="#">Tourist Portal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Essentials 🌎</h3>
+                    <ul>
+                        <li><a href="#">Yet</a></li>
+                        <li><a href="#">To</a></li>
+                        <li><a href="#">Decide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Gallery 📸</h3>
+                    <ul>
+                        <li><a href="#">Images</a></li>
+                        <li><a href="#">Videos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Helpline Numbers</h3>
+                    <ul>
+                        <li><a href="#">Local police</a></li>
+                        <li><a href="#">Women helpline</a></li>
+                        <li><a href="#">Ambulance, Etc.</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Tourist related</h3>
+                    <ul>
+                        <li><a href="#">Do's and Don'ts</a></li>
+                        <li><a href="#">Travel safety</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer-column">
-                <h3>Downloads</h3>
-                <ul>
-                    <li><a href="#">Local navigation app</a></li>
-                    <li><a href="#">Local weather app</a></li>
-                    <li><a href="#">Translation app</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Policies/ Schemes/ Acts/ Rules & Regulation</h3>
-                <ul>
-                    <li><a href="#">Research purposes</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Other website links</h3>
-                <ul>
-                    <li><a href="#">Government of India</a></li>
-                    <li><a href="#">Government of Jharkhand</a></li>
-                    <li><a href="#">Tourist Portal</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Essentials 🌎</h3>
-                <ul>
-                    <li><a href="#">Yet</a></li>
-                    <li><a href="#">To</a></li>
-                    <li><a href="#">Decide</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Gallery 📸</h3>
-                <ul>
-                    <li><a href="#">Images</a></li>
-                    <li><a href="#">Videos</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Helpline Numbers</h3>
-                <ul>
-                    <li><a href="#">Local police</a></li>
-                    <li><a href="#">Women helpline</a></li>
-                    <li><a href="#">Ambulance, Etc.</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Tourist related</h3>
-                <ul>
-                    <li><a href="#">Do's and Don'ts</a></li>
-                    <li><a href="#">Travel safety</a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- This is where the animated elements will be generated -->
-        <div class="footer-animation-container"></div>
-    </footer>
+            <!-- This is where the animated elements will be generated -->
+            <div class="footer-animation-container"></div>
+        </footer>
+    {% endif %}
     {% block js %}{% endblock js %}
 </body>
 </html>
