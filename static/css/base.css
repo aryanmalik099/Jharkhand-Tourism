@@ -1,8 +1,8 @@
 /* Header */
 .main-header {
     background-color: hsla(202, 39%, 23%, 0.98); /* Dark teal with slight transparency */
-    padding: 15px 0;
-    position: fixed;
+    padding: 15px 20px;
+    position: relative;
     width: 100%;
     top: 0;
     left: 0;
@@ -22,6 +22,7 @@
     font-size: 2em;
     font-weight: 700;
     letter-spacing: 1px;
+    padding: 15px 15px;
 }
 
 .main-header .logo .highlight {

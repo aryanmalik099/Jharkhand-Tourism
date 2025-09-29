@@ -35,7 +35,13 @@ body {
     color: var(--text-color);
     font-family: 'Poppins', sans-serif;
     transition: background-color 0.3s, color 0.3s;
-    margin-top: 100px;
+    margin-top: auto;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 25px;
 }
 
 .main-content {

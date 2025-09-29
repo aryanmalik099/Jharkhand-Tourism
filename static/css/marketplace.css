@@ -18,6 +18,11 @@
     font-size: 1rem;
 }
 
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
 .map-container {
     height: 400px;
     margin-bottom: 40px;
