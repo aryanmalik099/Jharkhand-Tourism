@@ -22,7 +22,8 @@
                     <li><a href="{{url_for ('destinations')}}" class="nav-link">Destinations</a></li>
                     <li><a href="{{url_for ('planner')}}" class="nav-link">Plan Your Trip</a></li>
                     <li><a href="{{url_for ('gallery')}}" class="nav-link">Gallery</a></li>
-                    <li><a href="{{url_for ('marketplace')}}" class="nav-link">Marketplace</a></li> {% if session.get('loggedin') %}
+                    <li><a href="{{url_for ('marketplace')}}" class="nav-link">Marketplace</a></li>
+                    {% if session.get('loggedin') %}
                         <li class="logout"><a href="{{url_for ('profile')}}" class="nav-link link-danger">Profile</a></li>
                     {% else %}
                         <li class="login"><a href="{{url_for ('auth')}}" class="nav-link link-success">Login</a></li>
@@ -104,7 +105,6 @@
                     </ul>
                 </div>
             </div>
-            <!-- This is where the animated elements will be generated -->
             <div class="footer-animation-container"></div>
         </footer>
     {% endif %}

@@ -1,39 +1,108 @@
 {% extends 'base.html' %}
-{% block title %}Trip Planner - Jharkhand Tourism{% endblock title %}
+{% block title %}Advanced Trip Planner - Jharkhand Tourism{% endblock title %}
+
 {% block css %}
-    <link rel="stylesheet" href="/static/css/trip_planner.css">
+    <link rel="stylesheet" href="/static/css/planner.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    
 {% endblock css %}
 {% block js %}
-    <script src="/static/js/trip_planner.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
 {% endblock js %}
+
 {% block body %}
-<main class="container">
-    <h1>Plan Your Trip</h1>
-    <div class="trip-planner-container">
-        <div class="places-list">
-            <h2>Select Places</h2>
-            <div class="filters">
-                <select id="district-filter">
-                    <option value="all">All Districts</option>
-                    <option value="ranchi">Ranchi</option>
-                    <option value="hazaribagh">Hazaribagh</option>
-                </select>
-                <select id="category-filter-planner">
-                    <option value="all">All Categories</option>
-                    <option value="waterfall">Waterfall</option>
-                    <option value="wildlife">Wildlife</option>
-                    <option value="historical">Historical</option>
-                </select>
-            </div>
-            <div id="places-grid" class="places-grid">
-                </div>
+<main class="main-content">
+    <div class="planner-header">
+        <h1>Trip Planner</h1>
+        <div class="tabs">
+            <button class="tab-link active" data-tab="self-plan"><i class="fas fa-edit"></i> Self Plan</button>
+            <button class="tab-link" data-tab="smart-plan"><i class="fas fa-magic"></i> Smart Plan</button>
         </div>
-        <div class="itinerary">
-            <h2>Your Itinerary</h2>
-            <ul id="itinerary-list">
-                </ul>
-            <button id="save-trip-btn">Save Trip</button>
+        <div class="theme-toggle">
+            <i class="fas fa-sun"></i>
+            <label class="switch">
+                <input type="checkbox" id="dark-mode-toggle">
+                <span class="slider round"></span>
+            </label>
+            <i class="fas fa-moon"></i>
+        </div>
+    </div>
+
+    <div id="self-plan" class="tab-content active">
+        <div class="planner-container">
+            <aside class="destinations-panel">
+                <h3><i class="fas fa-search-location"></i> Explore Destinations</h3>
+                <div class="filters">
+                    <input type="text" id="search-bar" placeholder="Search for a place...">
+                    <select id="category-filter">
+                        <option value="all">All Categories</option>
+                        <option value="waterfall">Waterfall</option>
+                        <option value="wildlife">Wildlife</option>
+                        <option value="historical">Historical</option>
+                        <option value="scenic">Scenic</option>
+                    </select>
+                </div>
+                <div id="places-grid" class="places-grid">
+                    <div class="loader"></div>
+                </div>
+            </aside>
+            <main class="itinerary-panel">
+                <div class="itinerary-header">
+                    <h3><i class="fas fa-route"></i> Your Itinerary</h3>
+                    <div class="itinerary-actions">
+                        <button id="add-day-btn" class="btn-secondary"><i class="fas fa-plus"></i> Add Day</button>
+                        <button id="save-trip-btn" class="btn-primary"><i class="fas fa-save"></i> Save Trip</button>
+                    </div>
+                </div>
+                <div id="itinerary-days-container" class="itinerary-days-container">
+                    <p class="placeholder">Add a day to start building your itinerary!</p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div id="smart-plan" class="tab-content">
+        <div class="smart-plan-form">
+            <h3>Let's craft your perfect trip!</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="duration">Trip Duration (days)</label>
+                    <input type="number" id="duration" value="3" min="1">
+                </div>
+                <div class="form-group">
+                    <label for="budget">Budget</label>
+                    <select id="budget">
+                        <option value="economy">Economy</option>
+                        <option value="standard">Standard</option>
+                        <option value="luxury">Luxury</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>What are your interests?</label>
+                <div class="interest-tags">
+                    <span class="tag" data-interest="wildlife">Wildlife</span>
+                    <span class="tag" data-interest="waterfall">Waterfalls</span>
+                    <span class="tag" data-interest="historical">Historical</span>
+                    <span class="tag" data-interest="scenic">Scenic</span>
+                </div>
+            </div>
+            <button id="generate-smart-plan-btn" class="btn-primary"><i class="fas fa-cogs"></i> Generate My Plan</button>
+        </div>
+
+        <div id="smart-plan-results" class="smart-plan-results" style="display: none;">
+            <h3>Your AI-Generated Itinerary</h3>
+            <div id="smart-itinerary-container"></div>
+            <div class="smart-plan-actions">
+                <button id="edit-smart-plan-btn" class="btn-secondary"><i class="fas fa-edit"></i> Edit This Plan</button>
+                <button id="save-smart-plan-btn" class="btn-primary"><i class="fas fa-save"></i> Save This Plan</button>
+            </div>
         </div>
     </div>
 </main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+
+<script src="/static/js/trip_planner.js"></script>
 {% endblock body %}

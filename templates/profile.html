@@ -1,49 +1,150 @@
 {% extends 'base.html' %}
 {% block title %}My Profile - Jharkhand Tourism{% endblock title %}
 {% block css %}
-    <link rel="stylesheet" href="/static/css/profile_updated.css">
+    <link rel="stylesheet" href="/static/css/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 {% endblock css %}
 {% block body %}
 <main class="main-content">
-    <main class="container">
-        <div class="profile-header">
-            <h1>Welcome, {{ username }}!</h1>
-            <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
-        </div>
-
-        <div class="profile-tabs">
-            <button class="tab-link active" onclick="openTab(event, 'planned-trips')">Planned Trips</button>
-            <button class="tab-link" onclick="openTab(event, 'trip-history')">Trip History</button>
-            <button class="tab-link" onclick="openTab(event, 'saved-places')">Saved Places</button>
-        </div>
-
-        <div id="planned-trips" class="tab-content" style="display:block;">
-            <h2>Planned Trips</h2>
+    <div class="profile-container">
+        <aside class="profile-sidebar">
+            <div class="profile-avatar">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg" alt="User Avatar">
+                <h3>{{ username }}</h3>
+                <p>Travel Enthusiast</p>
             </div>
-
-        <div id="trip-history" class="tab-content">
-            <h2>Trip History</h2>
+            <nav class="profile-nav">
+                <ul>
+                    <li><a href="#dashboard" class="tab-link active" data-tab="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="#planned-trips" class="tab-link" data-tab="planned-trips"><i class="fas fa-route"></i> Planned Trips</a></li>
+                    <li><a href="#trip-history" class="tab-link" data-tab="trip-history"><i class="fas fa-history"></i> Trip History</a></li>
+                    <li><a href="#saved-places" class="tab-link" data-tab="saved-places"><i class="fas fa-heart"></i> Saved Places</a></li>
+                    <li><a href="#settings" class="tab-link" data-tab="settings"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+            <div class="profile-logout">
+                <a href="{{ url_for('logout') }}" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
-
-        <div id="saved-places" class="tab-content">
-            <h2>Saved Places</h2>
-            </div>
-    </main>
-
-    <script>
-    function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tab-content");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tab-link");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-    </script>
+        </aside>
+        <main class="profile-main-content">
+            <section id="dashboard" class="tab-content active">
+                <h2>Dashboard</h2>
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-route"></i>
+                        <h4>Trips Planned</h4>
+                        <p>{{ planned_trips|length }}</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-check-circle"></i>
+                        <h4>Trips Completed</h4>
+                        <p>{{ trip_history|length }}</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-heart"></i>
+                        <h4>Places Saved</h4>
+                        <p>{{ saved_places|length }}</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>Destinations Visited</h4>
+                        <p>0</p> {# Placeholder #}
+                    </div>
+                </div>
+                <div class="recent-activity">
+                    <h3>Recent Activity</h3>
+                    <ul>
+                        <li>You saved <strong>Dassam Falls</strong>.</li>
+                        <li>You completed your trip to <strong>Ranchi</strong>.</li>
+                        <li>You planned a new trip: <strong>Monsoon Adventure</strong>.</li>
+                    </ul>
+                </div>
+            </section>
+            <section id="planned-trips" class="tab-content">
+                <h2>Planned Trips</h2>
+                <div class="trip-list">
+                    {% for trip in planned_trips %}
+                    <div class="trip-card">
+                        <h4>{{ trip.trip_name }}</h4>
+                        <p>Created on: {{ trip.created_at.strftime('%B %d, %Y') }}</p>
+                        <a href="#" class="btn-view-details">View Details</a>
+                    </div>
+                    {% else %}
+                    <p>No planned trips yet. Start planning your next adventure!</p>
+                    {% endfor %}
+                </div>
+            </section>
+            <section id="trip-history" class="tab-content">
+                <h2>Trip History</h2>
+                <div class="trip-list">
+                    {% for trip in trip_history %}
+                    <div class="trip-card">
+                        <h4>{{ trip.trip_name }}</h4>
+                        <p>Completed on: {{ trip.created_at.strftime('%B %d, %Y') }}</p>
+                        <a href="#" class="btn-view-details">View Details</a>
+                    </div>
+                    {% else %}
+                    <p>You have no completed trips in your history.</p>
+                    {% endfor %}
+                </div>
+            </section>
+            <section id="saved-places" class="tab-content">
+                <h2>Saved Places</h2>
+                <div class="saved-places-grid">
+                     {% for place in saved_places %}
+                    <div class="place-card">
+                        <img src="{{ place.image_url }}" alt="{{ place.name }}">
+                        <div class="place-info">
+                            <h4>{{ place.name }}</h4>
+                            <p>{{ place.description }}</p>
+                            <a href="#">Learn More</a>
+                        </div>
+                    </div>
+                    {% else %}
+                    <p>You haven't saved any places yet.</p>
+                    {% endfor %}
+                </div>
+            </section>
+            <section id="settings" class="tab-content">
+                <h2>Settings</h2>
+                <form class="settings-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" value="{{ username }}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" value="your.email@example.com"> {# Placeholder #}
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Change Password</label>
+                        <input type="password" id="password" placeholder="Enter new password">
+                    </div>
+                    <button type="submit" class="btn-submit">Save Changes</button>
+                </form>
+            </section>
+        </main>
+    </div>
 </main>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const tabLinks = document.querySelectorAll('.tab-link');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Deactivate all links and content
+            tabLinks.forEach(l => l.classList.remove('active'));
+            tabContents.forEach(c => c.classList.remove('active'));
+
+            // Activate the clicked link and corresponding content
+            const tab = link.dataset.tab;
+            link.classList.add('active');
+            document.getElementById(tab).classList.add('active');
+        });
+    });
+});
+</script>
 {% endblock body %}

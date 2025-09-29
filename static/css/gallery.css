@@ -573,7 +573,7 @@ img {
 
 .animated-footer {
     position: relative;
-    background: linear-gradient(to right, #4CAF50, #2196F3, #9C27B0, #FFEB3B, #FF9800); /* Colorful gradient */
+    background: black;
     color: white;
     padding: 20px 0;
     overflow: hidden; /* Crucial to keep particles within the footer */

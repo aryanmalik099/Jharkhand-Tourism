@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, j
 from flask_mysqldb import MySQL
 import os
 import re
+from flask import request   
 
 app = Flask(__name__)
 
@@ -94,6 +95,48 @@ def logout():
 
 # === New Feature Routes ===
 
+@app.route('/api/smart-plan', methods=['POST'])
+def get_smart_plan():
+    """Generates a smart itinerary based on user preferences."""
+    try:
+        prefs = request.json
+        duration = int(prefs.get('duration', 3))
+        interests = prefs.get('interests', []) # e.g., ['wildlife', 'waterfall']
+        
+        # In a real-world scenario, you'd have complex logic here.
+        # This is a simplified example:
+        # 1. Fetch places that match the interests.
+        # 2. Prioritize and select a logical number of places for the duration.
+        # 3. Group them by day (e.g., 2-3 places per day).
+
+        query = "SELECT id, name, district, category, description, image_url, latitude, longitude FROM places"
+        if interests:
+            # Creates a query like: SELECT ... WHERE category IN ('wildlife', 'waterfall')
+            placeholders = ','.join(['%s'] * len(interests))
+            query += f" WHERE category IN ({placeholders})"
+        
+        query += " LIMIT %s"
+        
+        # Limit places to a reasonable number, e.g., 2 per day
+        limit = duration * 2
+        params = interests + [limit]
+
+        cur = mysql.connection.cursor()
+        cur.execute(query, tuple(params))
+        places = cur.fetchall()
+
+        # Simple day-wise distribution
+        itinerary = []
+        for i, place in enumerate(places):
+            day_num = (i // 2) + 1 # Assign 2 places per day
+            itinerary.append({ "day": day_num, "place": place })
+            
+        return jsonify({"success": True, "itinerary": itinerary})
+
+    except Exception as e:
+        print(e) # For debugging
+        return jsonify({"success": False, "message": "Could not generate a plan."}), 500
+
 @app.route('/profile')
 def profile():
     """Displays the user's profile with their trips and saved places."""
@@ -155,7 +198,8 @@ def vendor_profile(vendor_id):
 def get_places():
     """API endpoint to get places for the trip planner."""
     cur = mysql.connection.cursor()
-    cur.execute("SELECT id, name, district, category FROM places")
+    # Ensure latitude and longitude are selected
+    cur.execute("SELECT id, name, district, category, description, image_url, latitude, longitude FROM places")
     places = cur.fetchall()
     return jsonify(places)
 
