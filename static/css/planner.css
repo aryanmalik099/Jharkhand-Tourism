@@ -10,26 +10,32 @@
     --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
     --shadow-md: 0 4px 15px rgba(0,0,0,0.08);
     --body-bg: #f8fafc;
+    --card-bg: var(--white);
+    --input-bg: var(--light-neutral);
 }
 
 /* Dark Mode Variables */
 [data-theme="dark"] {
     --primary-color: #00cfa4;
     --secondary-color: #ff8282;
-    --dark-neutral: #cdd5e0;
-    --light-neutral: #1e293b;
-    --white: #0f172a;
-    --text-color: #e2e8f0;
+    --dark-neutral: #cdd5e0; /* Lighter text for dark background */
+    --light-neutral: #1e293b; /* Darker background for light elements */
+    --white: #0f172a; /* Even darker for main background elements */
+    --text-color: #e2e8f0; /* Light text for main content */
     --border-color: #334155;
     --shadow-sm: 0 2px 4px rgba(0,0,0,0.2);
     --shadow-md: 0 4px 15px rgba(0,0,0,0.3);
     --body-bg: #020617;
+    --card-bg: #0f172a;
+    --input-bg: #1e293b;
 }
 
 body {
     background-color: var(--body-bg);
     color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
     transition: background-color 0.3s, color 0.3s;
+    margin-top: 100px;
 }
 
 .main-content {
@@ -44,23 +50,31 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: var(--white);
+    background-color: var(--card-bg);
     border-radius: 12px;
     box-shadow: var(--shadow-md);
     margin-bottom: 2rem;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 .planner-header h1 {
-    color: var(--dark-neutral);
-    font-size: 2rem;
+    color: var(--primary-color);
+    font-size: 2.2rem;
     margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.planner-header h1 i {
+    color: var(--dark-neutral);
 }
 
 .tabs {
     display: flex;
-    background-color: var(--light-neutral);
+    background-color: var(--input-bg);
     border-radius: 10px;
     padding: 5px;
+    box-shadow: var(--shadow-sm);
 }
 
 .tab-link {
@@ -71,13 +85,19 @@ body {
     cursor: pointer;
     font-weight: 600;
     border-radius: 8px;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .tab-link.active {
     background-color: var(--primary-color);
-    color: #fff;
+    color: var(--white);
     box-shadow: var(--shadow-sm);
+}
+.tab-link:not(.active):hover {
+    background-color: var(--border-color);
 }
 
 /* Tab Content */
@@ -91,61 +111,117 @@ body {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Main Planner Layout */
 .planner-container {
     display: flex;
     gap: 2rem;
+    position: relative; /* For loader positioning */
+}
+
+.destinations-panel, .itinerary-panel, .map-summary-panel {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    height: calc(100vh - 150px); /* Adjust based on header height */
+    display: flex;
+    flex-direction: column;
 }
 
 .destinations-panel {
     width: 350px;
     flex-shrink: 0;
-    background-color: var(--white);
-    border-radius: 10px;
-    padding: 1.5rem;
-    box-shadow: var(--shadow-md);
-    height: calc(100vh - 150px);
-    display: flex;
-    flex-direction: column;
 }
 
 .itinerary-panel {
     flex-grow: 1;
-    background-color: var(--white);
-    border-radius: 10px;
-    padding: 1.5rem;
-    box-shadow: var(--shadow-md);
-    height: calc(100vh - 150px);
+}
+
+.map-summary-panel {
+    width: 400px;
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
+    gap: 1.5rem;
 }
 
 h3 {
     color: var(--dark-neutral);
     margin-bottom: 1rem;
     font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+h3 i {
+    color: var(--primary-color);
 }
 
 /* Destinations Panel */
+.filters {
+    margin-bottom: 1rem;
+}
 .filters input, .filters select {
     width: 100%;
     padding: 0.75rem;
     border: 1px solid var(--border-color);
-    background-color: var(--light-neutral);
+    background-color: var(--input-bg);
     color: var(--text-color);
     border-radius: 8px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+.filters input:focus, .filters select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(var(--primary-color), 0.2);
+}
+
+.filter-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+.filter-tag {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 0.3rem 0.6rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.filter-tag .remove-tag {
+    cursor: pointer;
+    font-size: 0.7rem;
+    opacity: 0.8;
+}
+.filter-tag .remove-tag:hover {
+    opacity: 1;
 }
 
 .places-grid {
     flex-grow: 1;
     overflow-y: auto;
-    padding-right: 10px;
+    padding-right: 10px; /* For scrollbar */
 }
+.places-grid::-webkit-scrollbar {
+    width: 8px;
+}
+.places-grid::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
+    border-radius: 4px;
+}
+.places-grid::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
 
 .place-card {
     display: flex;
@@ -154,11 +230,14 @@ h3 {
     border-radius: 8px;
     margin-bottom: 0.75rem;
     cursor: grab;
-    background-color: var(--light-neutral);
-    transition: box-shadow 0.2s;
+    background-color: var(--input-bg);
+    transition: box-shadow 0.2s, transform 0.2s;
+    border: 1px solid var(--border-color);
 }
 .place-card:active {
     cursor: grabbing;
+    box-shadow: 0 0 0 2px var(--primary-color);
+    transform: scale(1.02);
 }
 .place-card:hover {
     box-shadow: 0 0 0 2px var(--primary-color);
@@ -169,16 +248,21 @@ h3 {
     height: 75px;
     object-fit: cover;
     border-radius: 5px;
+    box-shadow: var(--shadow-sm);
 }
 
+.place-card-info {
+    flex-grow: 1;
+}
 .place-card-info h4 {
     margin: 0 0 5px 0;
     font-size: 1.1rem;
+    color: var(--dark-neutral);
 }
 .place-card-info p {
     margin: 0;
-    font-size: 0.9rem;
-    opacity: 0.7;
+    font-size: 0.85rem;
+    opacity: 0.8;
 }
 
 /* Itinerary Panel */
@@ -187,22 +271,41 @@ h3 {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+.itinerary-actions {
+    display: flex;
+    gap: 10px;
 }
 
 .itinerary-days-container {
     flex-grow: 1;
     overflow-y: auto;
     padding: 1rem;
-    border: 1px solid var(--border-color);
+    border: 1px dashed var(--border-color);
     border-radius: 8px;
-    background-color: var(--light-neutral);
+    background-color: var(--input-bg);
+    transition: background-color 0.3s;
+}
+.itinerary-days-container::-webkit-scrollbar {
+    width: 8px;
+}
+.itinerary-days-container::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
+    border-radius: 4px;
+}
+.itinerary-days-container::-webkit-scrollbar-track {
+    background-color: transparent;
 }
 
+
 .day-block {
-    background-color: var(--white);
+    background-color: var(--card-bg);
     border-radius: 8px;
     margin-bottom: 1rem;
     box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    overflow: hidden; /* For border-radius on children */
 }
 
 .day-header {
@@ -212,72 +315,181 @@ h3 {
     padding: 0.75rem 1rem;
     background-color: var(--light-neutral);
     border-bottom: 1px solid var(--border-color);
-    cursor: pointer;
+    cursor: grab;
+    font-weight: 600;
+    color: var(--dark-neutral);
+    transition: background-color 0.2s;
+}
+.day-header:hover {
+    background-color: var(--border-color);
+}
+.day-header.sortable-chosen {
+    background-color: var(--accent-color);
 }
 
 .day-header h4 {
     margin: 0;
+    font-size: 1.1rem;
 }
+.day-header .day-actions {
+    display: flex;
+    gap: 5px;
+}
+.day-header .day-actions button {
+    background: none;
+    border: none;
+    color: var(--secondary-color);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 5px;
+    border-radius: 5px;
+}
+.day-header .day-actions button:hover {
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
 
 .day-content {
     padding: 1rem;
-    min-height: 100px;
+    min-height: 80px;
+    background-color: var(--card-bg);
+    transition: background-color 0.3s;
+}
+
+.day-placeholder {
+    color: var(--text-color);
+    opacity: 0.6;
+    text-align: center;
+    padding: 1rem;
+    font-style: italic;
 }
 
 .itinerary-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.75rem;
-    background-color: var(--light-neutral);
+    padding: 0.6rem 1rem;
+    background-color: var(--input-bg);
     border-radius: 5px;
     margin-bottom: 0.5rem;
     cursor: grab;
+    border: 1px solid var(--border-color);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+.itinerary-item:last-child {
+    margin-bottom: 0;
+}
+.itinerary-item:hover {
+    box-shadow: 0 0 0 2px rgba(var(--primary-color), 0.5);
 }
 .itinerary-item:active {
     cursor: grabbing;
+    transform: scale(1.01);
 }
 .itinerary-item.ghost {
     opacity: 0.4;
-    background: #c8ebfb;
+    background: var(--accent-color);
+    color: var(--dark-neutral);
+}
+.itinerary-item span {
+    font-weight: 500;
 }
 
+.itinerary-item .remove-item-btn {
+    background: none;
+    border: none;
+    color: var(--secondary-color);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 5px;
+    border-radius: 5px;
+}
+.itinerary-item .remove-item-btn:hover {
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
+/* Trip Summary & Map */
+.trip-summary {
+    background-color: var(--input-bg);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+}
+.trip-summary p {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+.trip-summary span {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.trip-map {
+    flex-grow: 1;
+    background-color: var(--input-bg);
+    border-radius: 8px;
+    height: 100%; /* Important for Leaflet to render */
+    min-height: 250px;
+    border: 1px solid var(--border-color);
+}
+
+
 .btn-primary, .btn-secondary {
-    padding: 0.6rem 1.2rem;
+    padding: 0.75rem 1.5rem;
     border: none;
     border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s, transform 0.1s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
 }
-.btn-primary { background-color: var(--primary-color); color: white; }
-.btn-secondary { background-color: var(--secondary-color); color: white; }
+.btn-primary { background-color: var(--primary-color); color: var(--white); }
+.btn-primary:hover { background-color: #008f6b; box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); }
+
+.btn-secondary { background-color: var(--secondary-color); color: var(--white); }
+.btn-secondary:hover { background-color: #d14f4f; box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+.btn-secondary:active { transform: translateY(0); }
 
 /* Smart Plan */
 .smart-plan-form {
-    background-color: var(--white);
-    padding: 2rem;
+    background-color: var(--card-bg);
+    padding: 2.5rem;
     border-radius: 12px;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
+    box-shadow: var(--shadow-md);
 }
 .form-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
     margin-bottom: 1.5rem;
 }
 .form-group label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
     font-weight: 500;
+    color: var(--dark-neutral);
 }
 .form-group input, .form-group select {
     width: 100%;
     padding: 0.75rem;
     border: 1px solid var(--border-color);
-    background-color: var(--light-neutral);
+    background-color: var(--input-bg);
     color: var(--text-color);
     border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+.form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(var(--primary-color), 0.2);
 }
 
 .interest-tags {
@@ -286,52 +498,221 @@ h3 {
     gap: 0.75rem;
 }
 .tag {
-    background-color: var(--light-neutral);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.tag:hover {
+    background-color: var(--border-color);
 }
 .tag.selected {
     background-color: var(--accent-color);
     color: var(--dark-neutral);
     font-weight: 600;
+    border-color: var(--accent-color);
+    box-shadow: var(--shadow-sm);
 }
+.tag i {
+    color: var(--primary-color); /* Icons in tags */
+}
+.tag.selected i {
+    color: var(--dark-neutral); /* Icons in selected tags */
+}
+
+
 .smart-plan-results {
     margin-top: 2rem;
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.smart-plan-summary {
+    background-color: var(--light-neutral);
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+}
+.smart-plan-summary p {
+    margin-bottom: 0.5rem;
+    color: var(--dark-neutral);
+}
+.smart-plan-summary span {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.smart-plan-actions {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
 }
 
 /* Dark Mode Toggle */
-.theme-toggle { display: flex; align-items: center; gap: 0.5rem; }
-.switch { position: relative; display: inline-block; width: 50px; height: 26px; }
-.switch input { opacity: 0; width: 0; height: 0; }
-.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; }
-.slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; transition: .4s; }
-input:checked + .slider { background-color: var(--primary-color); }
-input:checked + .slider:before { transform: translateX(24px); }
-.slider.round { border-radius: 34px; }
-.slider.round:before { border-radius: 50%; }
+.theme-toggle { 
+    display: flex; 
+    align-items: center; 
+    gap: 0.5rem; 
+    color: var(--dark-neutral);
+}
+.theme-toggle i {
+    font-size: 1.2rem;
+}
+.switch { 
+    position: relative; 
+    display: inline-block; 
+    width: 50px; 
+    height: 26px; 
+}
+.switch input { 
+    opacity: 0; 
+    width: 0; 
+    height: 0; 
+}
+.slider { 
+    position: absolute; 
+    cursor: pointer; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    background-color: #ccc; 
+    transition: .4s; 
+    border-radius: 34px;
+}
+.slider:before { 
+    position: absolute; 
+    content: ""; 
+    height: 20px; 
+    width: 20px; 
+    left: 3px; 
+    bottom: 3px; 
+    background-color: white; 
+    transition: .4s; 
+    border-radius: 50%;
+}
+input:checked + .slider { 
+    background-color: var(--primary-color); 
+}
+input:checked + .slider:before { 
+    transform: translateX(24px); 
+}
+
+/* Loader */
+.loader {
+    border: 4px solid var(--border-color);
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 2rem auto;
+    display: none; /* Hidden by default */
+}
+.places-grid.loading .loader {
+    display: block;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 
 /* Responsive */
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
     .planner-container {
+        flex-wrap: wrap; /* Allow panels to wrap */
+    }
+    .destinations-panel, .itinerary-panel, .map-summary-panel {
+        width: 100%; /* Take full width on smaller screens */
+        height: auto; /* Allow height to adjust */
+        max-height: none;
+    }
+    .map-summary-panel {
+        display: flex; /* Change back to flex for smaller screens */
         flex-direction: column;
+        gap: 1.5rem;
     }
-    .destinations-panel {
-        width: 100%;
-        height: auto;
-        max-height: 40vh;
-    }
-    .itinerary-panel {
-        height: auto;
+    .trip-map {
+        min-height: 300px;
     }
 }
-@media (max-width: 768px) {
+
+@media (max-width: 900px) {
     .planner-header {
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+    .planner-header h1 {
+        font-size: 1.8rem;
+    }
+    .tabs {
+        width: 100%;
+        justify-content: center;
+    }
+    .tab-link {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+    .smart-plan-form, .smart-plan-results {
+        padding: 1.5rem;
     }
     .form-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .main-content {
+        padding: 0.5rem;
+    }
+    .planner-header {
+        padding: 0.75rem;
+    }
+    .planner-header h1 {
+        font-size: 1.5rem;
+    }
+    .tabs {
+        flex-direction: column;
+        gap: 5px;
+    }
+    .tab-link {
+        width: 100%;
+        text-align: center;
+    }
+    .btn-primary, .btn-secondary {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+    .itinerary-actions {
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+    }
+    .itinerary-actions button {
+        width: 100%;
+    }
+    .day-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .smart-plan-actions {
+        flex-direction: column;
+        gap: 10px;
     }
 }

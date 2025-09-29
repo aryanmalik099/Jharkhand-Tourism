@@ -9,6 +9,7 @@
 {% endblock css %}
 {% block js %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 {% endblock js %}
 
 {% block body %}
@@ -41,7 +42,12 @@
                         <option value="wildlife">Wildlife</option>
                         <option value="historical">Historical</option>
                         <option value="scenic">Scenic</option>
+                        <option value="religious">Religious</option>
+                        <option value="adventure">Adventure</option>
                     </select>
+                    <div class="filter-tags" id="selected-filters-display">
+                        <!-- Selected filters will appear here -->
+                    </div>
                 </div>
                 <div id="places-grid" class="places-grid">
                     <div class="loader"></div>
@@ -59,6 +65,19 @@
                     <p class="placeholder">Add a day to start building your itinerary!</p>
                 </div>
             </main>
+            <section class="map-summary-panel">
+                <div class="trip-summary">
+                    <h3><i class="fas fa-info-circle"></i> Trip Overview</h3>
+                    <p>Total Days: <span id="summary-total-days">0</span></p>
+                    <p>Total Places: <span id="summary-total-places">0</span></p>
+                    <p>Estimated Distance: <span id="summary-distance">0 km</span></p>
+                    <p>Activities: <span id="summary-activities">None</span></p>
+                </div>
+                <div class="map-container">
+                    <h3><i class="fas fa-map-marked-alt"></i> Route Map</h3>
+                    <div id="trip-map" class="trip-map"></div>
+                </div>
+            </section>
         </div>
     </div>
 
@@ -67,25 +86,57 @@
             <h3>Let's craft your perfect trip!</h3>
             <div class="form-grid">
                 <div class="form-group">
-                    <label for="duration">Trip Duration (days)</label>
-                    <input type="number" id="duration" value="3" min="1">
+                    <label for="smart-duration">Trip Duration (days)</label>
+                    <input type="number" id="smart-duration" value="3" min="1">
                 </div>
                 <div class="form-group">
-                    <label for="budget">Budget</label>
-                    <select id="budget">
-                        <option value="economy">Economy</option>
-                        <option value="standard">Standard</option>
-                        <option value="luxury">Luxury</option>
+                    <label for="smart-travelers">Number of Travelers</label>
+                    <input type="number" id="smart-travelers" value="2" min="1">
+                </div>
+                <div class="form-group">
+                    <label for="smart-budget">Budget</label>
+                    <select id="smart-budget">
+                        <option value="economy">Economy (₹)</option>
+                        <option value="standard" selected>Standard (₹₹)</option>
+                        <option value="luxury">Luxury (₹₹₹)</option>
+                    </select>
+                </div>
+                 <div class="form-group">
+                    <label for="smart-travel-style">Travel Style</label>
+                    <select id="smart-travel-style">
+                        <option value="relaxed">Relaxed</option>
+                        <option value="moderate" selected>Moderate Pace</option>
+                        <option value="fast">Fast-Paced</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="smart-accommodation">Accommodation Preference</label>
+                    <select id="smart-accommodation">
+                        <option value="budget">Budget Hostel/Homestay</option>
+                        <option value="mid-range" selected>Mid-range Hotel</option>
+                        <option value="luxury">Resort/Boutique Hotel</option>
+                    </select>
+                </div>
+                 <div class="form-group">
+                    <label for="smart-food-preference">Food Preference</label>
+                    <select id="smart-food-preference">
+                        <option value="local">Local Cuisine</option>
+                        <option value="mix" selected>Mix of Local & International</option>
+                        <option value="vegetarian">Vegetarian Only</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
                 <label>What are your interests?</label>
-                <div class="interest-tags">
-                    <span class="tag" data-interest="wildlife">Wildlife</span>
-                    <span class="tag" data-interest="waterfall">Waterfalls</span>
-                    <span class="tag" data-interest="historical">Historical</span>
-                    <span class="tag" data-interest="scenic">Scenic</span>
+                <div class="interest-tags" id="smart-interest-tags">
+                    <span class="tag" data-interest="wildlife"><i class="fas fa-paw"></i> Wildlife</span>
+                    <span class="tag" data-interest="waterfall"><i class="fas fa-water"></i> Waterfalls</span>
+                    <span class="tag" data-interest="historical"><i class="fas fa-landmark"></i> Historical</span>
+                    <span class="tag" data-interest="scenic"><i class="fas fa-mountain"></i> Scenic Views</span>
+                    <span class="tag" data-interest="religious"><i class="fas fa-church"></i> Religious Sites</span>
+                    <span class="tag" data-interest="adventure"><i class="fas fa-biking"></i> Adventure Sports</span>
+                    <span class="tag" data-interest="culture"><i class="fas fa-people-carry-box"></i> Culture</span>
+                    <span class="tag" data-interest="food"><i class="fas fa-utensils"></i> Foodie</span>
                 </div>
             </div>
             <button id="generate-smart-plan-btn" class="btn-primary"><i class="fas fa-cogs"></i> Generate My Plan</button>
@@ -93,16 +144,21 @@
 
         <div id="smart-plan-results" class="smart-plan-results" style="display: none;">
             <h3>Your AI-Generated Itinerary</h3>
-            <div id="smart-itinerary-container"></div>
+            <div class="smart-plan-summary">
+                <p>Plan for <span id="smart-summary-duration"></span> days, <span id="smart-summary-travelers"></span> travelers.</p>
+                <p>Budget: <span id="smart-summary-budget"></span>, Style: <span id="smart-summary-style"></span></p>
+                <p>Interests: <span id="smart-summary-interests"></span></p>
+            </div>
+            <div id="smart-itinerary-container" class="itinerary-days-container">
+                <!-- Smart plan days will be rendered here -->
+            </div>
             <div class="smart-plan-actions">
-                <button id="edit-smart-plan-btn" class="btn-secondary"><i class="fas fa-edit"></i> Edit This Plan</button>
-                <button id="save-smart-plan-btn" class="btn-primary"><i class="fas fa-save"></i> Save This Plan</button>
+                <button id="edit-smart-plan-btn" class="btn-secondary"><i class="fas fa-edit"></i> Adjust Plan</button>
+                <button id="save-smart-plan-btn" class="btn-primary"><i class="fas fa-save"></i> Save & Customize</button>
             </div>
         </div>
     </div>
 </main>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
 
 <script src="/static/js/trip_planner.js"></script>
 {% endblock body %}
