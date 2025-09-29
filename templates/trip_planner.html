@@ -141,8 +141,10 @@
                     <span class="tag" data-interest="food"><i class="fas fa-utensils"></i> Foodie</span>
                 </div>
             </div>
-            <button id="generate-smart-plan-btn" class="btn-primary"><i class="fas fa-cogs"></i> Generate My Plan</button>
-        </div>
+            <a href="{{ url_for('plan1') }}" id="generate-smart-plan-btn" class="btn-primary">
+             <i class="fas fa-cogs"></i> Generate My Plan
+            </a>
+            </div>
 
         <div id="smart-plan-results" class="smart-plan-results" style="display: none;">
             <h3>Your AI-Generated Itinerary</h3>

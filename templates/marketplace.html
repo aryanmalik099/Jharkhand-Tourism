@@ -1,36 +1,104 @@
 {% extends 'base.html' %}
-{% block title %}Marketplace - Jharkhand Tourism{% endblock title %}
+{% block title %}Vibrant Jharkhand Marketplace - Explore Local Treasures{% endblock title %}
 {% block css %}
     <link rel="stylesheet" href="/static/css/marketplace.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 {% endblock css %}
 {% block js %}
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
     <script src="/static/js/marketplace.js"></script>
 {% endblock js %}
 {% block body %}
 <main class="main-content">
     <section class="hero-section">
         <div class="hero-content">
-            <h1>Local Marketplaces & Vendors</h1>
-            <p>Discover the heart of Jharkhand's culture through its local markets and vendors.</p>
+            <h1>Jharkhand's Vibrant Marketplace</h1>
+            <p>Discover authentic crafts, delectable flavors, and unique shopping experiences across the state.</p>
+            <div class="search-bar-container">
+                <input type="text" id="search-input" placeholder="Search for shops, markets, products..." class="search-input">
+                <button id="search-button" class="search-button"><i class="fas fa-search"></i> Search</button>
+            </div>
         </div>
     </section>
 
-    <section class="container">
-        <div class="filters">
-            <select id="category-filter">
-                <option value="all">All Categories</option>
-                <option value="handloom">Handloom</option>
-                <option value="handicrafts">Handicrafts</option>
-                <option value="street-food">Street Food</option>
-            </select>
-        </div>
-
-        <div id="map-view" class="map-container"></div>
-
-        <div id="vendor-grid" class="vendor-grid">
+    <section class="container marketplace-section">
+        <aside class="sidebar">
+            <h2><i class="fas fa-filter"></i> Filters</h2>
+            <div class="filter-group">
+                <label for="category-filter"><i class="fas fa-tags"></i> Category:</label>
+                <select id="category-filter" class="filter-select">
+                    <option value="all">All Categories</option>
+                    <option value="handloom">Handloom & Textiles</option>
+                    <option value="handicrafts">Handicrafts & Art</option>
+                    <option value="food">Street Food & Local Delicacies</option>
+                    <option value="malls">Shopping Malls</option>
+                    <option value="markets">Traditional Markets</option>
+                    <option value="boutiques">Boutiques & Souvenirs</option>
+                </select>
             </div>
+
+            <div class="filter-group">
+                <label for="rating-filter"><i class="fas fa-star"></i> Min. Rating:</label>
+                <select id="rating-filter" class="filter-select">
+                    <option value="0">Any Rating</option>
+                    <option value="4">4 Stars & Up</option>
+                    <option value="3">3 Stars & Up</option>
+                    <option value="2">2 Stars & Up</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="sort-by"><i class="fas fa-sort"></i> Sort By:</label>
+                <select id="sort-by" class="filter-select">
+                    <option value="name-asc">Name (A-Z)</option>
+                    <option value="name-desc">Name (Z-A)</option>
+                    <option value="rating-desc">Rating (High to Low)</option>
+                    <option value="rating-asc">Rating (Low to High)</option>
+                </select>
+            </div>
+            <button id="reset-filters" class="btn-primary reset-button"><i class="fas fa-sync-alt"></i> Reset Filters</button>
+        </aside>
+
+        <div class="content-area">
+            <h2 class="section-heading"><i class="fas fa-map-marked-alt"></i> Explore on Map</h2>
+            <div id="map-view" class="map-container"></div>
+
+            <h2 class="section-heading"><i class="fas fa-store"></i> Featured Vendors</h2>
+            <div id="featured-vendors" class="vendor-grid featured-grid">
+                <!-- Featured vendors will be loaded here -->
+            </div>
+
+            <h2 class="section-heading"><i class="fas fa-th-large"></i> All Listings</h2>
+            <div id="vendor-grid" class="vendor-grid">
+                <!-- All vendors will be loaded here -->
+            </div>
+
+            <div id="no-results" class="no-results-message" style="display: none;">
+                <p><i class="fas fa-exclamation-circle"></i> No results found matching your criteria. Try adjusting your filters!</p>
+            </div>
+        </div>
     </section>
 </main>
+
+<!-- Vendor Details Modal -->
+<div id="vendor-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <img id="modal-image" src="" alt="Vendor Image">
+        <h3 id="modal-name"></h3>
+        <p><i class="fas fa-info-circle"></i> <span id="modal-category"></span></p>
+        <p><i class="fas fa-map-marker-alt"></i> <span id="modal-address"></span></p>
+        <p><i class="fas fa-star"></i> Rating: <span id="modal-rating"></span></p>
+        <p><i class="fas fa-phone-alt"></i> Contact: <span id="modal-contact"></span></p>
+        <p id="modal-description"></p>
+        <div class="modal-buttons">
+            <a id="modal-directions" href="#" target="_blank" class="btn-primary"><i class="fas fa-directions"></i> Get Directions</a>
+        </div>
+    </div>
+</div>
 {% endblock body %}

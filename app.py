@@ -174,6 +174,10 @@ def planner():
     """Renders the trip planner page."""
     return render_template('trip_planner.html')
 
+@app.route('/plan1')
+def plan1():
+    return render_template('plan1.html')
+
 @app.route('/marketplace')
 def marketplace():
     """Renders the local vendors and marketplace page."""

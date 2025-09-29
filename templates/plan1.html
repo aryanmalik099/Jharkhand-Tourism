@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+{% block title %}Jharkhand Trip Plan{% endblock title %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/plan1.css') }}">
+{% endblock css %}
+
+{% block body %}
+    <div class="container">
+        <header>
+            <h1>Your Jharkhand Adventure Awaits!</h1>
+            <p>Here's your personalized 5-day trip plan, crafted just for you.</p>
+        </header>
+
+        <div class="summary-card">
+            <h2><i class="fas fa-info-circle"></i> Trip Summary</h2>
+            <div class="summary-details">
+                <div class="summary-item"><i class="fas fa-calendar-alt"></i> <strong>Trip Duration:</strong> 5 Days</div>
+                <div class="summary-item"><i class="fas fa-users"></i> <strong>Travelers:</strong> 5</div>
+                <div class="summary-item"><i class="fas fa-rupee-sign"></i> <strong>Budget:</strong> ₹45,000–₹60,000</div>
+                <div class="summary-item"><i class="fas fa-mountain"></i> <strong>Travel Style:</strong> Nature, Culture, Adventure</div>
+                <div class="summary-item"><i class="fas fa-bed"></i> <strong>Accommodation:</strong> Budget hotels & homestays</div>
+                <div class="summary-item"><i class="fas fa-utensils"></i> <strong>Food Preference:</strong> Local cuisine, vegetarian-friendly</div>
+                <div class="summary-item"><i class="fas fa-hiking"></i> <strong>Interests:</strong> Waterfalls, wildlife, tribal culture, scenic drives</div>
+            </div>
+        </div>
+
+        <div id="ai-itinerary" class="card">
+            <h2><i class="fas fa-robot"></i> Your AI-Generated Itinerary</h2>
+            <div id="typing-output" class="typing-effect"></div>
+        </div>
+
+        <div class="card">
+            <h2><i class="fas fa-map-marked-alt"></i> Interactive Map</h2>
+            <div id="interactive-map">
+                <div class="map-placeholder">
+                    <p>Map loading... (Placeholder for Google Maps or similar service)</p>
+                    <p>Markers will show planned locations with details on click.</p>
+                    <img src="https://via.placeholder.com/600x400?text=Map+of+Jharkhand" alt="Placeholder Map of Jharkhand">
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><i class="fas fa-money-bill-wave"></i> Estimated Cost Breakdown (for 5 Travelers)</h2>
+            <table class="cost-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Cost Per Person (₹)</th>
+                        <th>Total Cost (₹)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Accommodation (Budget Hotels/Homestays)</td>
+                        <td>3,000</td>
+                        <td>15,000</td>
+                    </tr>
+                    <tr>
+                        <td>Food (Local Cuisine)</td>
+                        <td>2,000</td>
+                        <td>10,000</td>
+                    </tr>
+                    <tr>
+                        <td>Transport (Inter-city & Local, e.g., shared cabs/rentals)</td>
+                        <td>4,000</td>
+                        <td>20,000</td>
+                    </tr>
+                    <tr>
+                        <td>Activities & Entry Fees (Waterfalls, Safari, Temples)</td>
+                        <td>1,000</td>
+                        <td>5,000</td>
+                    </tr>
+                    <tr>
+                        <td>Miscellaneous (contingency, small purchases)</td>
+                        <td>1,000</td>
+                        <td>5,000</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Total Estimated Cost</th>
+                        <th>11,000</th>
+                        <th>55,000</th>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><strong>Your Budget Range:</strong> ₹45,000–₹60,000 (Your plan fits perfectly!)</td>
+                    </tr>
+                </tfoot>
+            </table>
+            <p style="font-size: 0.9em; margin-top: 15px; color: var(--light-text-color);">*Costs are estimates and can vary based on season, negotiation, and specific choices.</p>
+        </div>
+
+        <div class="card">
+            <h2><i class="fas fa-lightbulb"></i> AI Extras: Tips & Insights</h2>
+            <div class="ai-extras-grid">
+                <div class="extra-item">
+                    <h3><i class="fas fa-gem"></i> Hidden Gems & Offbeat Places</h3>
+                    <ul>
+                        <li><strong>Dassam Falls:</strong> Explore the less crowded spots around the main fall for unique photo opportunities.</li>
+                        <li><strong>Jonha Falls:</strong> Visit the Gautam Dhara temple nearby, often overlooked.</li>
+                        <li><strong>Netarhat:</strong> Wake up early for the stunning sunrise at Magnolia Point, even more serene than Sunrise Point.</li>
+                        <li><strong>Betla National Park:</strong> After the safari, try to visit the local village markets for authentic tribal handicrafts.</li>
+                        <li><strong>Ranchi:</strong> Explore the art and craft shops near Firayalal Chowk for unique souvenirs, beyond the main tourist areas.</li>
+                    </ul>
+                </div>
+                <div class="extra-item">
+                    <h3><i class="fas fa-shield-alt"></i> Safety Tips for Travelers</h3>
+                    <ul>
+                        <li><strong>General:</strong> Keep important documents photocopied or digital. Inform family/friends of your itinerary.</li>
+                        <li><strong>Wildlife:</strong> Follow guide instructions strictly in national parks. Maintain a safe distance from animals.</li>
+                        <li><strong>Waterfalls:</strong> Be cautious on slippery rocks. Do not venture into deep waters without local guidance.</li>
+                        <li><strong>Remote Areas:</strong> Travel in groups, especially in less-frequented areas. Avoid traveling late at night on isolated roads.</li>
+                        <li><strong>Valuables:</strong> Keep cash and valuables secure. Avoid displaying large amounts of cash or expensive jewelry.</li>
+                        <li><strong>Health:</strong> Carry basic first-aid, insect repellent. Drink bottled water.</li>
+                    </ul>
+                </div>
+                <div class="extra-item">
+                    <h3><i class="fas fa-handshake"></i> Cultural Guidance & Etiquette</h3>
+                    <ul>
+                        <li><strong>Dress Code:</strong> When visiting temples or tribal villages, dress modestly (shoulders and knees covered).</li>
+                        <li><strong>Greetings:</strong> A respectful "Namaste" (with folded hands) is always appreciated.</li>
+                        <li><strong>Photography:</strong> Always ask for permission before taking photos of people, especially in tribal areas.</li>
+                        <li><strong>Local Interaction:</strong> Engage respectfully with local communities. They appreciate politeness and genuine interest.</li>
+                        <li><strong>Food:</strong> It's polite to use your right hand when eating, especially traditional thali meals.</li>
+                        <li><strong>Bargaining:</strong> Common in local markets; do so politely and with a smile.</li>
+                    </ul>
+                </div>
+                <div class="extra-item">
+                    <h3><i class="fas fa-piggy-bank"></i> Travel Hacks & Savings</h3>
+                    <ul>
+                        <li><strong>Transport:</strong> For inter-city travel, consider booking shared jeeps or taxis in advance for better rates.</li>
+                        <li><strong>Food:</strong> Eat at local eateries (dhabas) for authentic and budget-friendly vegetarian meals.</li>
+                        <li><strong>Accommodation:</strong> Homestays offer a more immersive cultural experience and are often cheaper than hotels.</li>
+                        <li><strong>Off-Season Travel:</strong> Consider visiting just before or after peak season for lower prices and fewer crowds.</li>
+                        <li><strong>Pack Smart:</strong> Carry essentials to avoid buying them at inflated tourist prices.</li>
+                        <li><strong>Negotiate:</strong> For local transport (auto-rickshaws) and market purchases, polite negotiation can save you money.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <a href="#" class="action-button" id="downloadPdf"><i class="fas fa-file-pdf"></i> Download as PDF</a>
+            <a href="#" class="action-button" id="sharePlan"><i class="fas fa-share-alt"></i> Share Plan</a>
+        </div>
+    </div>
+{% endblock body %}
+
+{% block js %}
+    <script src="{{ url_for('static', filename='js/plan1.js') }}"></script>
+{% endblock js %}
