@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Vendor Profile - Jharkhand Tourism{% endblock title %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/vendor_profile.css">
+{% endblock css %}
+{% block body %}
+<main class="container">
+    <div class="vendor-profile">
+        <div class="vendor-images">
+            <img src="https://via.placeholder.com/600x400" alt="Vendor Image">
+        </div>
+        <div class="vendor-details">
+            <h1>Vendor Name</h1>
+            <p class="category">Category: Handicrafts</p>
+            <p class="description">Detailed description of the vendor and their products/services.</p>
+            <p class="contact"><b>Contact:</b> vendor@example.com</p>
+        </div>
+    </div>
+</main>
+{% endblock body %}

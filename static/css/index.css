@@ -645,7 +645,7 @@ a:hover {
 
 /* Contact Section */
 .contact-section {
-    background: linear-gradient(135deg, var(--dark-neutral), #3a6275);
+    background: white;
 }
 
 .contact-grid {
@@ -659,21 +659,21 @@ a:hover {
 .contact-form {
     padding: 30px;
     border-radius: 12px;
-    background-color: rgba(255, 255, 255, 0.08); /* Slightly transparent white for glass effect */
+    background-color: rgba(255, 255, 255, 0.08);
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    backdrop-filter: blur(5px); /* Glassmorphism effect */
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .contact-info h3,
 .contact-form h3 {
-    color: var(--white);
+    color: rgb(98, 32, 145);
     margin-bottom: 25px;
     font-size: 1.8em;
 }
 
 .contact-info p {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(0, 0, 0, 0.9);
     margin-bottom: 15px;
     display: flex;
     align-items: center;
@@ -682,29 +682,31 @@ a:hover {
 }
 
 .contact-info p i {
-    color: var(--accent-color);
+    color: rgb(0, 0, 0);
     font-size: 1.3em;
 }
 
 .social-links {
     margin-top: 30px;
+    color: #000000;
     display: flex;
     gap: 20px;
 }
 
 .social-links a {
-    color: var(--white);
+    color: rgb(0, 0, 0);
     font-size: 1.8em;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .social-links a:hover {
-    color: var(--secondary-color);
+    color: black;
     transform: translateY(-5px) scale(1.1);
 }
 
 .contact-form .form-group {
     margin-bottom: 20px;
+    color: #000000;
 }
 
 .contact-form input[type="text"],
@@ -712,10 +714,10 @@ a:hover {
 .contact-form textarea {
     width: 100%;
     padding: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(0, 0, 0, 0.3);
     border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: var(--white);
+    background-color: rgba(227, 37, 248, 0.1);
+    color: black;
     font-family: var(--font-poppins);
     font-size: 1em;
     transition: border-color 0.3s ease, background-color 0.3s ease;
@@ -723,14 +725,14 @@ a:hover {
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(0, 0, 0, 0.7);
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
     outline: none;
-    border-color: var(--accent-color);
-    background-color: rgba(255, 255, 255, 0.15);
+    border-color: black;
+    background-color: rgba(0, 0, 0, 0.15);
 }
 
 .contact-form .btn-primary-light {

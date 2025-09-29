@@ -1,26 +1,49 @@
 {% extends 'base.html' %}
-
+{% block title %}My Profile - Jharkhand Tourism{% endblock title %}
 {% block css %}
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/profile.css">
+    <link rel="stylesheet" href="/static/css/profile_updated.css">
 {% endblock css %}
-
 {% block body %}
+<main class="main-content">
+    <main class="container">
+        <div class="profile-header">
+            <h1>Welcome, {{ username }}!</h1>
+            <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+        </div>
 
-<div class="container">
+        <div class="profile-tabs">
+            <button class="tab-link active" onclick="openTab(event, 'planned-trips')">Planned Trips</button>
+            <button class="tab-link" onclick="openTab(event, 'trip-history')">Trip History</button>
+            <button class="tab-link" onclick="openTab(event, 'saved-places')">Saved Places</button>
+        </div>
 
-    <h1>Welcome, {{ username }}!</h1>
+        <div id="planned-trips" class="tab-content" style="display:block;">
+            <h2>Planned Trips</h2>
+            </div>
 
-    <p><strong>Username:</strong> {{ username }}</p>
+        <div id="trip-history" class="tab-content">
+            <h2>Trip History</h2>
+            </div>
 
-    <form action="{{ url_for('logout') }}" method="get">
-        <button type="submit">Logout</button>
-    </form>
+        <div id="saved-places" class="tab-content">
+            <h2>Saved Places</h2>
+            </div>
+    </main>
 
-</div>
-
+    <script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tab-link");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    </script>
+</main>
 {% endblock body %}
-
-{% block scripts %}
-    <script src="{{ url_for('static', filename='profile.js') }}"></script>
-{% endblock scripts %}

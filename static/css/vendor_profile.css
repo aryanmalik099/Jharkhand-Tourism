@@ -1,0 +1,19 @@
+.vendor-profile {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.vendor-images {
+    flex: 1;
+}
+
+.vendor-images img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.vendor-details {
+    flex: 2;
+}

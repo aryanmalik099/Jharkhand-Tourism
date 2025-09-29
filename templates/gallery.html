@@ -2,74 +2,86 @@
 {% block title %}Gallery - Jharkhand Tourism{% endblock title %}
 {% block css %}
     <link rel="stylesheet" href="/static/css/gallery.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
 {% endblock css %}
 {% block js %}
     <script src="/static/js/gallery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
 {% endblock js %}
 {% block body %}
-    <main>
-        <section class="hero-section">
-            <div class="hero-content">
-                <h1>Explore the Unseen. Experience Jharkhand.</h1>
-                <p>A visual journey through the heart of India.</p>
-            </div>
-            <!-- Background image/video would go here -->
-        </section>
+    <main class="main-content">
+        <main>
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h1>Explore the Unseen. Experience Jharkhand.</h1>
+                    <p>A visual journey through the heart of India.</p>
+                </div>
+                <!-- Background image/video would go here -->
+            </section>
 
-        <section class="gallery-categories container">
-            <h2>Gallery Categories</h2>
-            <div class="category-grid">
-                <div class="category-item" data-category="waterfalls">
-                    <img src="https://picsum.photos/id/1015/400/300" alt="Waterfalls & Rivers">
-                    <div class="overlay">Waterfalls & Rivers</div>
+            <section class="gallery-categories container">
+                <h2>Gallery Categories</h2>
+                <div class="category-grid">
+                    <div class="category-item" data-category="waterfalls">
+                        <img src="https://picsum.photos/id/1015/400/300" alt="Waterfalls & Rivers">
+                        <div class="overlay">Waterfalls & Rivers</div>
+                    </div>
+                    <div class="category-item" data-category="wildlife">
+                        <img src="https://picsum.photos/id/1021/400/300" alt="Wildlife & National Parks">
+                        <div class="overlay">Wildlife & National Parks</div>
+                    </div>
+                    <div class="category-item" data-category="temples">
+                        <img src="https://picsum.photos/id/1011/400/300" alt="Temples & Pilgrimage Sites">
+                        <div class="overlay">Temples & Pilgrimage Sites</div>
+                    </div>
+                    <div class="category-item" data-category="culture">
+                        <img src="https://picsum.photos/id/1023/400/300" alt="Culture & Festivals">
+                        <div class="overlay">Culture & Festivals</div>
+                    </div>
+                    <div class="category-item" data-category="adventure">
+                        <img src="https://picsum.photos/id/1016/400/300" alt="Adventure Sports">
+                        <div class="overlay">Adventure Sports</div>
+                    </div>
+                    <div class="category-item" data-category="food">
+                        <img src="https://picsum.photos/id/1080/400/300" alt="Local Cuisine">
+                        <div class="overlay">Local Cuisine</div>
+                    </div>
                 </div>
-                <div class="category-item" data-category="wildlife">
-                    <img src="https://picsum.photos/id/1021/400/300" alt="Wildlife & National Parks">
-                    <div class="overlay">Wildlife & National Parks</div>
-                </div>
-                <div class="category-item" data-category="temples">
-                    <img src="https://picsum.photos/id/1011/400/300" alt="Temples & Pilgrimage Sites">
-                    <div class="overlay">Temples & Pilgrimage Sites</div>
-                </div>
-                <div class="category-item" data-category="culture">
-                    <img src="https://picsum.photos/id/1023/400/300" alt="Culture & Festivals">
-                    <div class="overlay">Culture & Festivals</div>
-                </div>
-                <div class="category-item" data-category="adventure">
-                    <img src="https://picsum.photos/id/1016/400/300" alt="Adventure Sports">
-                    <div class="overlay">Adventure Sports</div>
-                </div>
-                <div class="category-item" data-category="food">
-                    <img src="https://picsum.photos/id/1080/400/300" alt="Local Cuisine">
-                    <div class="overlay">Local Cuisine</div>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section class="interactive-gallery container">
-            <h2>Our Photo Collection</h2>
-            <div class="gallery-filters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="waterfalls">Waterfalls</button>
-                <button class="filter-btn" data-filter="wildlife">Wildlife</button>
-                <button class="filter-btn" data-filter="temples">Temples</button>
-                <button class="filter-btn" data-filter="culture">Culture</button>
-                <button class="filter-btn" data-filter="adventure">Adventure</button>
-                <button class="filter-btn" data-filter="food">Food</button>
-            </div>
-            <div class="photo-grid" id="photoGrid">
-                <!-- Images will be loaded here by JavaScript -->
-            </div>
-        </section>
+            <section class="interactive-gallery container">
+                <h2>Our Photo Collection</h2>
+                <div class="gallery-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="waterfalls">Waterfalls</button>
+                    <button class="filter-btn" data-filter="wildlife">Wildlife</button>
+                    <button class="filter-btn" data-filter="temples">Temples</button>
+                    <button class="filter-btn" data-filter="culture">Culture</button>
+                    <button class="filter-btn" data-filter="adventure">Adventure</button>
+                    <button class="filter-btn" data-filter="food">Food</button>
+                </div>
+                <div class="photo-grid" id="photoGrid">
+                    <!-- Images will be loaded here by JavaScript -->
+                </div>
+            </section>
+            <section class="virtual-tour-section container">
+                <h2>360° Virtual Tours</h2>
+                <div id="panorama-container"></div>
+                <div class="tour-locations">
+                    <button class="tour-location-btn" data-panorama="/static/images/360/patratu-valley.jpg" data-title="Patratu Valley">Patratu Valley</button>
+                    <button class="tour-location-btn" data-panorama="/static/images/360/hundru-falls.jpg" data-title="Hundru Falls">Hundru Falls</button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Lightbox Markup -->
+        <div id="lightbox" class="lightbox">
+            <span class="close-btn">&times;</span>
+            <span class="prev-btn">&leftarrow;</span>
+            <span class="next-btn">&rightarrow;</span>
+            <img class="lightbox-content" id="lightboxImg" src="" alt="">
+            <div id="caption" class="caption"></div>
+        </div>
     </main>
-
-    <!-- Lightbox Markup -->
-    <div id="lightbox" class="lightbox">
-        <span class="close-btn">&times;</span>
-        <span class="prev-btn">&leftarrow;</span>
-        <span class="next-btn">&rightarrow;</span>
-        <img class="lightbox-content" id="lightboxImg" src="" alt="">
-        <div id="caption" class="caption"></div>
-    </div>
 {% endblock body %}
     

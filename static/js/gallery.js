@@ -177,3 +177,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const viewer = pannellum.viewer('panorama-container', {
+        "type": "equirectangular",
+        "panorama": "/static/images/360/patratu-valley.jpg",
+        "autoLoad": true,
+        "title": "Patratu Valley"
+    });
+
+    document.querySelectorAll('.tour-location-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            viewer.loadScene(button.dataset.panorama, button.dataset.title);
+        });
+    });
+});

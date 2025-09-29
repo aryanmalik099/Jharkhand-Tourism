@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Marketplace - Jharkhand Tourism{% endblock title %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/marketplace.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+{% endblock css %}
+{% block js %}
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="/static/js/marketplace.js"></script>
+{% endblock js %}
+{% block body %}
+<main class="main-content">
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Local Marketplaces & Vendors</h1>
+                <p>Discover the heart of Jharkhand's culture through its local markets and vendors.</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="filters">
+                <select id="category-filter">
+                    <option value="all">All Categories</option>
+                    <option value="handloom">Handloom</option>
+                    <option value="handicrafts">Handicrafts</option>
+                    <option value="street-food">Street Food</option>
+                </select>
+            </div>
+
+            <div id="map-view" class="map-container"></div>
+
+            <div id="vendor-grid" class="vendor-grid">
+                </div>
+        </section>
+    </main>
+</main>
+{% endblock body %}

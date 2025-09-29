@@ -81,7 +81,7 @@
 /* Footer */
 .animated-footer {
     position: relative;
-    background: linear-gradient(to right, #4CAF50, #2196F3, #9C27B0, #FFEB3B, #FF9800); /* Colorful gradient */
+    background-color: black;
     color: white;
     padding: 60px 0; /* More padding for better aesthetics */
     overflow: hidden; /* Crucial to keep particles within the footer */
@@ -204,4 +204,8 @@
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+/* Add this new class at the end of the file */
+.main-content {
+    padding-top: 80px; /* Adjust this value to match your header's height */
 }

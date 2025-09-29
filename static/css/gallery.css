@@ -656,3 +656,29 @@ img {
         opacity: 0;
     }
 }
+.virtual-tour-section {
+    text-align: center;
+    padding: 60px 0;
+}
+#panorama-container {
+    width: 100%;
+    height: 500px;
+    margin-bottom: 20px;
+}
+.tour-locations {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.tour-location-btn {
+    padding: 10px 20px;
+    border: 1px solid var(--primary-color);
+    background: transparent;
+    color: var(--primary-color);
+    cursor: pointer;
+    border-radius: 5px;
+}
+.tour-location-btn:hover {
+    background: var(--primary-color);
+    color: #fff;
+}

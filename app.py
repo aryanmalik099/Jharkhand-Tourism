@@ -1,56 +1,75 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from flask_mysqldb import MySQL
 import os
 import re
 
 app = Flask(__name__)
 
+# --- Database Configuration ---
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'password'
 app.config['MYSQL_DB'] = 'jharkhand'
+# Use DictCursor to access columns by name - THIS IS IMPORTANT
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
+# --- Initialize MySQL ---
 mysql = MySQL(app)
-app.secret_key = 'root'
 
+# --- Secret Key for Session Management ---
+app.secret_key = 'your_very_secret_key' # It's better to use a random key
+
+# === Core Routes ===
 
 @app.route('/')
 def home():
+    """Renders the homepage."""
     return render_template('index.html')
 
+@app.route('/destinations')
+def destinations():
+    """Renders the destinations page."""
+    return render_template('betla.html')
+
+@app.route('/gallery')
+def gallery():
+    """Renders the gallery page."""
+    return render_template('gallery.html')
+
+# === Authentication Routes ===
 
 @app.route('/auth', methods=['GET', 'POST'])
 def auth():
+    """Handles user login and registration."""
     msg = ''
+    if 'loggedin' in session:
+        return redirect(url_for('profile'))
+
     if request.method == 'POST':
         action = request.form.get('action')
 
         if action == 'login':
             username = request.form.get('login_username')
             password = request.form.get('login_password')
-
             cur = mysql.connection.cursor()
             cur.execute("SELECT * FROM accounts WHERE username = %s AND password = %s", (username, password))
-            acc = cur.fetchone()
-
-            if acc:
+            account = cur.fetchone()
+            if account:
                 session['loggedin'] = True
-                session['id'] = acc[0]
-                session['username'] = acc[1]  # Store username in session
-                return redirect(url_for('home'))  # Redirect to profile after login
+                session['id'] = account['id']
+                session['username'] = account['username']
+                return redirect(url_for('home'))
             else:
-                msg = 'Invalid Login Credentials'
+                msg = 'Incorrect username or password!'
 
         elif action == 'register':
             username = request.form.get('register_username')
-            email = request.form.get('register_email')
             password = request.form.get('register_password')
-
+            email = request.form.get('register_email')
             cur = mysql.connection.cursor()
             cur.execute("SELECT * FROM accounts WHERE username = %s", (username,))
-            acc = cur.fetchone()
-
-            if acc:
+            account = cur.fetchone()
+            if account:
                 msg = 'Account already exists!'
             elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
                 msg = 'Invalid email address!'
@@ -59,46 +78,111 @@ def auth():
             elif not username or not password or not email:
                 msg = 'Please fill out the form!'
             else:
-                cur.execute(
-                    "INSERT INTO accounts (username, password, email) VALUES (%s, %s, %s)",
-                    (username, password, email)
-                )
-                cur.connection.commit()
-                msg = 'You have successfully registered! You can now login.'
+                cur.execute("INSERT INTO accounts (username, password, email) VALUES (%s, %s, %s)", (username, password, email))
+                mysql.connection.commit()
+                msg = 'You have successfully registered! Please login.'
 
     return render_template('auth.html', msg=msg, page='auth')
 
-
-
 @app.route('/logout')
 def logout():
+    """Logs the user out and clears the session."""
     session.pop('loggedin', None)
     session.pop('id', None)
     session.pop('username', None)
     return redirect(url_for('auth'))
 
+# === New Feature Routes ===
+
 @app.route('/profile')
 def profile():
+    """Displays the user's profile with their trips and saved places."""
     if 'loggedin' in session:
-        return render_template('profile.html', username=session['username'], page='profile')
-    else:
-        return redirect()
-    return redirect(url_for('auth'))
+        user_id = session['id']
+        cur = mysql.connection.cursor()
 
+        # Fetch Planned Trips (not completed)
+        cur.execute("SELECT * FROM trips WHERE user_id = %s AND completed = FALSE", (user_id,))
+        planned_trips = cur.fetchall()
+
+        # Fetch Trip History (completed)
+        cur.execute("SELECT * FROM trips WHERE user_id = %s AND completed = TRUE", (user_id,))
+        trip_history = cur.fetchall()
+
+        # Fetch Saved Places
+        cur.execute("""
+            SELECT p.id, p.name, p.description, p.image_url
+            FROM saved_places sp
+            JOIN places p ON sp.place_id = p.id
+            WHERE sp.user_id = %s
+        """, (user_id,))
+        saved_places = cur.fetchall()
+
+        return render_template('profile.html',
+                               username=session['username'],
+                               planned_trips=planned_trips,
+                               trip_history=trip_history,
+                               saved_places=saved_places,
+                               page='profile')
+    return redirect(url_for('auth'))
 
 @app.route('/planner')
 def planner():
-    return render_template('planner.html')
+    """Renders the trip planner page."""
+    return render_template('trip_planner.html')
 
+@app.route('/marketplace')
+def marketplace():
+    """Renders the local vendors and marketplace page."""
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT id, name, category, image_url FROM vendors")
+    vendors = cur.fetchall()
+    return render_template('marketplace.html', vendors=vendors)
 
-@app.route('/gallery')
-def gallery():
-    return render_template('gallery.html')
+@app.route('/vendor/<int:vendor_id>')
+def vendor_profile(vendor_id):
+    """Displays the detailed profile of a specific vendor."""
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM vendors WHERE id = %s", (vendor_id,))
+    vendor = cur.fetchone()
+    if vendor:
+        return render_template('vendor_profile.html', vendor=vendor)
+    return "Vendor not found", 404
 
+# === API Routes for Dynamic Content ===
 
-@app.route('/destinations')
-def destinations():
-    return render_template('betla.html')
+@app.route('/api/places')
+def get_places():
+    """API endpoint to get places for the trip planner."""
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT id, name, district, category FROM places")
+    places = cur.fetchall()
+    return jsonify(places)
+
+@app.route('/api/trips', methods=['POST'])
+def save_trip():
+    """API endpoint to save a new trip."""
+    if 'loggedin' in session:
+        data = request.get_json()
+        trip_name = data.get('name', 'My New Trip') # Provide a default name
+        place_ids = data.get('places')
+        user_id = session['id']
+
+        if not place_ids:
+            return jsonify({'success': False, 'message': 'No places selected.'}), 400
+
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO trips (user_id, trip_name) VALUES (%s, %s)", (user_id, trip_name))
+        trip_id = cur.lastrowid
+
+        # Insert into trip_places junction table
+        for place_id in place_ids:
+            cur.execute("INSERT INTO trip_places (trip_id, place_id) VALUES (%s, %s)", (trip_id, place_id))
+
+        mysql.connection.commit()
+        return jsonify({'success': True, 'message': 'Trip saved successfully!'})
+
+    return jsonify({'success': False, 'message': 'User not logged in.'}), 401
 
 
 if __name__ == '__main__':

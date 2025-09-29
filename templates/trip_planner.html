@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Trip Planner - Jharkhand Tourism{% endblock title %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/trip_planner.css">
+{% endblock css %}
+{% block js %}
+    <script src="/static/js/trip_planner.js"></script>
+{% endblock js %}
+{% block body %}
+<main class="container">
+    <h1>Plan Your Trip</h1>
+    <div class="trip-planner-container">
+        <div class="places-list">
+            <h2>Select Places</h2>
+            <div class="filters">
+                <select id="district-filter">
+                    <option value="all">All Districts</option>
+                    <option value="ranchi">Ranchi</option>
+                    <option value="hazaribagh">Hazaribagh</option>
+                </select>
+                <select id="category-filter-planner">
+                    <option value="all">All Categories</option>
+                    <option value="waterfall">Waterfall</option>
+                    <option value="wildlife">Wildlife</option>
+                    <option value="historical">Historical</option>
+                </select>
+            </div>
+            <div id="places-grid" class="places-grid">
+                </div>
+        </div>
+        <div class="itinerary">
+            <h2>Your Itinerary</h2>
+            <ul id="itinerary-list">
+                </ul>
+            <button id="save-trip-btn">Save Trip</button>
+        </div>
+    </div>
+</main>
+{% endblock body %}
