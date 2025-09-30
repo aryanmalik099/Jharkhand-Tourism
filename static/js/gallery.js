@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     const viewer = pannellum.viewer('panorama-container', {
         "type": "equirectangular",
-        "panorama": "/static/images/360/patratu-valley.jpg",
+        "panorama": "/static/images/patratu-valley.jpg",
         "autoLoad": true,
         "title": "Patratu Valley"
     });

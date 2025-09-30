@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             subCategory: 'shopping',
             description: 'A modern shopping mall with international and national brands, multiplex cinema, and a food court. Perfect for a day out. Enjoy a wide range of fashion, electronics, lifestyle products, and entertainment options under one roof.',
             lat: 23.3600, lon: 85.3000, // Ranchi
-            image: 'https://images.unsplash.com/photo-1528699667794-d47df270b240?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NjU2NTZ8MHwxfHxzaG9wcGluZyUyMG1hbGx8ZW58MHx8fHwxNzA4NjQzODQ0fDA&ixlib=rb-4.0.3&q=80&w=1080',
+            image: '/static/images/jd.png',
             address: 'Kanke Road, Ranchi, Jharkhand 834008',
             contact: '+91-7654321098',
             rating: 4.2,
